@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsj.mapper.CommentMapper">
+
+
+    <resultMap id="CommentResultMap" type="CommentVo">
+        <id column="id" property="id"/>
+        <result column="invitation_id" property="invitationId"/>
+        <result column="user_id" property="userId"/>
+        <result column="cin_id" property="cinId"/>
+        <result column="cfor_id" property="cforId"/>
+        <result column="time" property="time"/>
+        <result column="content" property="content"/>
+    </resultMap>
+
+    <select id="getFirstComment" parameterType="int" resultMap="CommentResultMap">
+        SELECT * FROM comment WHERE invitation_id = #{invitationId} AND cin_id IS NULL
+    </select>
+
+    <select id="getSubordinateComment" parameterType="int" resultMap="CommentResultMap">
+        SELECT * FROM comment WHERE cin_id = #{cin_id} ORDER BY time DESC
+    </select>
+
+</mapper>
+

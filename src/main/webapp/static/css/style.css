@@ -1,0 +1,12 @@
+body{
+    background-color: #eaeaea;
+}
+ul,li{
+    list-style: none;
+}
+a{
+    color: inherit;
+}
+a:hover{
+    text-decoration: none;
+}
