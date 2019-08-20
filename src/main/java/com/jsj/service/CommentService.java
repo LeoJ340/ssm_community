@@ -1,10 +1,10 @@
 package com.jsj.service;
 
-import com.jsj.bean.CommentVo;
+import com.jsj.bean.CommentUser;
 
 import java.util.List;
 
 public interface CommentService {
 
-    List<CommentVo> getCommentVo(int InvitationId);
+    List<CommentUser> getCommentUser(int InvitationId);
 }

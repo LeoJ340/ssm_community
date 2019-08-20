@@ -42,7 +42,14 @@
   <!--设置映射路径-->
   <servlet-mapping>
     <servlet-name>springMvc</servlet-name>
-    <url-pattern>*.do</url-pattern>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.js</url-pattern>
+    <url-pattern>*.css</url-pattern>
+    <url-pattern>/static/**</url-pattern>
   </servlet-mapping>
 
 </web-app>

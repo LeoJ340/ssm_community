@@ -16,8 +16,8 @@
         <ul class="row">
             <c:forEach items="${topCommunity}" var="community" end="2">
                 <li class="flex-fill text-center">
-                    <h3><a href="#">${community.name}社区</a></h3>
-                    <p>
+                    <h3><a href="/community/${community.id}">${community.name}社区</a></h3>
+                    <p class="content">
                         <c:choose>
                             <c:when test="${empty community.introduction}">
                                 暂无简介
@@ -33,8 +33,8 @@
         <ul class="row">
             <c:forEach items="${topCommunity}" var="community" begin="3">
                 <li class="flex-fill text-center">
-                    <h3><a href="#">${community.name}社区</a></h3>
-                    <p>
+                    <h3><a href="/community/${community.id}">${community.name}社区</a></h3>
+                    <p class="content">
                         <c:choose>
                             <c:when test="${empty community.introduction}">
                                 暂无简介
@@ -51,35 +51,15 @@
     <div class="bg-light pl-3 pr-3 pt-3 mt-2">
         <h5>热门帖子</h5>
         <ul>
-            <c:forEach items="${topInvitation.list}" var="invitation">
+            <c:forEach items="${topInvitation}" var="invitation">
                 <li class="d-flex flex-column border-bottom">
-<%--                    社区--%>
-                    <span><a href="#">${invitation.title}</a></span>
-<%--                    标题--%>
-                    <span><a href="#">${invitation.content}</a></span>
+                    <span><a href="/community/${invitation.communityId}" class="bg-dark text-white">${invitation.community.name}社区</a></span>
+                    <span><a href="/invitation/${invitation.id}">${invitation.title}</a></span>
+                    <span class="content">${invitation.content}</span>
                     <span class="d-flex justify-content-end">${invitation.time}</span>
                 </li>
             </c:forEach>
         </ul>
-        <nav aria-label="Page navigation example d-flex justify-content-center">
-            <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
     </div>
 </main>
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>

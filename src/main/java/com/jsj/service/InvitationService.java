@@ -1,12 +1,13 @@
 package com.jsj.service;
 
-import com.github.pagehelper.PageInfo;
 import com.jsj.bean.InvitationComment;
-import com.jsj.bean.InvitationCommunity;
+import com.jsj.bean.InvitationUserCommunity;
+
+import java.util.List;
 
 public interface InvitationService {
 
-    PageInfo<InvitationCommunity> getTopInvitation(int page, int pageSize);
+    List<InvitationUserCommunity> getTopInvitation();
 
     InvitationComment getInvitationComment(int invitationId);
 }

@@ -10,3 +10,7 @@ a{
 a:hover{
     text-decoration: none;
 }
+.content{
+    color: #666;
+    font-size: 14px;
+}

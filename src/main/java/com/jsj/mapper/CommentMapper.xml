@@ -5,7 +5,7 @@
 <mapper namespace="com.jsj.mapper.CommentMapper">
 
 
-    <resultMap id="CommentResultMap" type="CommentVo">
+    <resultMap id="CommentResultMap" type="CommentUser">
         <id column="id" property="id"/>
         <result column="invitation_id" property="invitationId"/>
         <result column="user_id" property="userId"/>
@@ -13,15 +13,36 @@
         <result column="cfor_id" property="cforId"/>
         <result column="time" property="time"/>
         <result column="content" property="content"/>
+        <!--关联信息-->
+        <result column="username" property="username"/>
+        <result column="photo_url" property="photoUrl"/>
     </resultMap>
 
     <select id="getFirstComment" parameterType="int" resultMap="CommentResultMap">
-        SELECT * FROM comment WHERE invitation_id = #{invitationId} AND cin_id IS NULL
+        SELECT
+            comment.*,
+            user.`username`,
+            user.`photo_url`
+        FROM
+            comment
+        INNER JOIN user
+            ON user.`id` = comment.`user_id`
+            AND invitation_id = #{invitationId}
+            AND cin_id IS NULL
     </select>
 
     <select id="getSubordinateComment" parameterType="int" resultMap="CommentResultMap">
-        SELECT * FROM comment WHERE cin_id = #{cin_id} ORDER BY time DESC
+        SELECT
+            comment.*,
+            user.`username`,
+            user.`photo_url`
+        FROM
+            COMMENT
+            INNER JOIN USER
+                ON comment.`user_id` = user.`id`
+                AND comment.`cin_id` = #{cin_id}
     </select>
+
 
 </mapper>
 

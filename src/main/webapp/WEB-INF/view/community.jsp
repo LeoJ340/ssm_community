@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>XX社区</title>
+    <title>${communityInvitations.name}社区</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/style.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/header.css">
@@ -13,21 +13,32 @@
 <main class="container mt-3">
     <div class="bg-light pl-3 pr-3 pt-3 mt-2">
         <div class="border bg-transparent">
-            <h5>XX社区</h5>
-            <p>简介</p>
+            <h5>${communityInvitations.name}社区</h5>
+            <p>
+                <c:choose>
+                    <c:when test="${empty communityInvitations.introduction}">简介</c:when>
+                    <c:otherwise>${communityInvitations.introduction}</c:otherwise>
+                </c:choose>
+            </p>
         </div>
         <ul>
-            <li class="d-flex flex-column border-bottom">
-                <span><a href="#">xx社区</a></span>
-                <span><a href="#">XXXXXXXXXXXXX</a></span>
-                <span class="d-flex justify-content-end">xxx 2019-8-9</span>
-            </li>
+            <c:forEach items="${communityInvitations.invitationUsers}" var="invitationUser">
+                <li class="d-flex flex-column border-bottom">
+                    <span class="row">
+                        <a class="text-primary" href="/invitation/${invitationUser.id}">${invitationUser.title}</a>
+                        <span>${invitationUser.username}</span>
+                    </span>
+                    <span class="content">${invitationUser.content}</span>
+                    <span class="d-flex justify-content-end">${invitationUser.time}</span>
+                </li>
+            </c:forEach>
         </ul>
-        <form method="post" action="">
+        <h5>发表回复</h5>
+        <form method="post" action="${pageContext.request.contextPath}/publishInvitation">
             <input type="text" maxlength="50" placeholder="请输入标题" class="w-100 pl-3 mt-3 mb-3 title" name="title" />
             <div id="contentEidtor"></div>
-            <textarea name="content" id="content" style="width: 100%;height: 75px"></textarea>
-            <button type="submit" name="method" value="publish" class="mt-3 btn btn-danger">发表</button>
+            <textarea id="content" style="display: none" name="content"></textarea>
+            <button type="submit" class="mt-3 btn btn-danger">发表</button>
         </form>
     </div>
 </main>

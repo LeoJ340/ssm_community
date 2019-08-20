@@ -4,14 +4,13 @@ import java.util.List;
 
 public class CommunityInvitations extends Community {
 
-    private List<Invitation> invitations;
+    private List<InvitationUser> invitationUsers;
 
-    public List<Invitation> getInvitations() {
-        return invitations;
+    public List<InvitationUser> getInvitationUsers() {
+        return invitationUsers;
     }
 
-    public void setInvitations(List<Invitation> invitations) {
-        this.invitations = invitations;
+    public void setInvitationUsers(List<InvitationUser> invitationUsers) {
+        this.invitationUsers = invitationUsers;
     }
-
 }

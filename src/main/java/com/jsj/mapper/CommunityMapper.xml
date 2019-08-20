@@ -4,21 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jsj.mapper.CommunityMapper">
 
-
-    <resultMap id="CommunityInvitationsResultMap" type="CommunityInvitations">
-        <id column="id" property="id"/>
-        <result column="name" property="name"/>
-        <result column="introduction" property="introduction"/>
-        <result column="status" property="status"/>
-        <collection property="invitations" ofType="Invitation">
-            <id column="id" property="id"/>
-            <result column="user_id" property="userId"/>
-            <result column="title" property="title"/>
-            <result column="content" property="content"/>
-            <result column="time" property="time"/>
-        </collection>
-    </resultMap>
-
     <!--查询帖子数最多的6条社区记录-->
     <select id="getTopCommunity" resultType="Community">
         SELECT
@@ -34,11 +19,9 @@
         LIMIT 0, 6
     </select>
 
-    <!--查询社区所有帖子-->
-    <select id="getCommunityInvitations" parameterType="int" resultMap="CommunityInvitationsResultMap">
-        SELECT * FROM invitation
-        WHERE community_id = #{communityId}
-        ORDER BY TIME DESC
+    <select id="getById" parameterType="int" resultType="Community">
+        SELECT * FROM community
+        WHERE id = #{id}
     </select>
 
 </mapper>

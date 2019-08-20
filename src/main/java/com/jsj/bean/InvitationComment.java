@@ -2,16 +2,15 @@ package com.jsj.bean;
 
 import	java.util.List;
 
-public class InvitationComment extends InvitationCommunity {
+public class InvitationComment extends InvitationUserCommunity {
 
-    private List <CommentVo> commentVos;
+    private List <CommentUser> commentUsers;
 
-    public List<CommentVo> getCommentVos() {
-        return commentVos;
+    public List<CommentUser> getCommentUsers() {
+        return commentUsers;
     }
 
-    public void setCommentVos(List<CommentVo> commentVos) {
-        this.commentVos = commentVos;
+    public void setCommentUsers(List<CommentUser> commentUsers) {
+        this.commentUsers = commentUsers;
     }
-
 }

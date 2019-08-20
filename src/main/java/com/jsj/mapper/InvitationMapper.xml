@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jsj.mapper.InvitationMapper">
 
-    <resultMap id="InvitationCommunityResultMap" type="InvitationCommunity">
+    <resultMap id="InvitationUserCommunityResultMap" type="InvitationUserCommunity">
         <id column="id" property="id"/>
         <result column="community_id" property="communityId"/>
         <result column="user_id" property="userId"/>
@@ -12,6 +12,10 @@
         <result column="content" property="content"/>
         <result column="time" property="time"/>
         <result column="status" property="status"/>
+        <!--关联用户信息-->
+        <result column="username" property="username"/>
+        <result column="photo_url" property="photoUrl"/>
+        <!--关联社区信息-->
         <association property="community" javaType="Community">
             <id column="id" property="id"/>
             <result column="name" property="name"/>
@@ -20,7 +24,7 @@
         </association>
     </resultMap>
 
-    <select id="getTopInvitation" resultMap="InvitationCommunityResultMap">
+    <select id="getTopInvitation" resultMap="InvitationUserCommunityResultMap">
         SELECT
             invitation.*,
             community.`name`,
@@ -34,18 +38,36 @@
         AND invitation.`status` = 1
         GROUP BY comment.`invitation_id`
         ORDER BY COUNT(comment.`invitation_id`) DESC
+        LIMIT 0,10
     </select>
 
-    <select id="getInvitationCommunityByInvitationId" parameterType="int" resultMap="InvitationCommunityResultMap">
+    <!-- 一个帖子 -->
+    <select id="getInvitationUserCommunityById" parameterType="int" resultMap="InvitationUserCommunityResultMap">
         SELECT
             invitation.*,
-            community.*
+            community.*,
+            user.`username`,
+            user.`photo_url`
         FROM
-            invitation
-            INNER JOIN community
-            ON invitation.`community_id` = community.`id`
+            invitation,
+            community,
+            user
+            WHERE invitation.`community_id` = community.`id`
+                AND user.`id` = invitation.`user_id`
                 AND invitation.`id` = #{invitationId}
                 AND invitation.`status` = 1
     </select>
 
+    <select id="getInvitationUsersByCommunityId" parameterType="int" resultType="InvitationUser">
+        SELECT
+            invitation.*,
+            user.`username`,
+            user.`photo_url`
+        FROM
+            invitation
+            INNER JOIN user
+                ON user.`id` = invitation.`user_id`
+                AND invitation.`community_id` = #{communityId}
+        ORDER BY TIME DESC
+    </select>
 </mapper>

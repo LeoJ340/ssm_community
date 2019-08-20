@@ -1,6 +1,6 @@
 package com.jsj.bean;
 
-public class InvitationCommunity extends Invitation {
+public class InvitationUserCommunity extends InvitationUser {
 
     private Community community;
 

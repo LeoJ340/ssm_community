@@ -23,5 +23,15 @@
         SELECT * FROM user WHERE id = #{id}
     </select>
 
+    <select id="getUserByCommentId" parameterType="int" resultType="User">
+        SELECT
+            user.`username`
+        FROM
+            COMMENT
+            INNER JOIN USER
+                ON comment.`user_id` = user.`id`
+                AND comment.`id` = #{commentId}
+    </select>
+
 </mapper>
 
