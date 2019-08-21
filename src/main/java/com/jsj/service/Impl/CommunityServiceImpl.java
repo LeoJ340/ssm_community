@@ -34,7 +34,11 @@ public class CommunityServiceImpl implements CommunityService {
         communityInvitations.setId(community.getId());
         communityInvitations.setName(community.getName());
         communityInvitations.setIntroduction(community.getIntroduction());
-        communityInvitations.setStatus(community.getStatus());
         return communityInvitations;
+    }
+
+    @Override
+    public List<Community> getCommunites(String name) {
+        return communityMapper.getCommunityLikeName(name);
     }
 }

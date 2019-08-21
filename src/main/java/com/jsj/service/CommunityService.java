@@ -10,4 +10,6 @@ public interface CommunityService {
     List<Community> getTopCommunity();
 
     CommunityInvitations getCommunityInvitations(int communityId);
+
+    List<Community> getCommunites(String name);
 }

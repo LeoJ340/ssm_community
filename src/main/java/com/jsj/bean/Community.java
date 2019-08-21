@@ -8,8 +8,6 @@ public class Community {
 
     private String introduction;
 
-    private Integer status;
-
     public Integer getId() {
         return id;
     }
@@ -32,14 +30,6 @@ public class Community {
 
     public void setIntroduction(String introduction) {
         this.introduction = introduction;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
     }
 
 }

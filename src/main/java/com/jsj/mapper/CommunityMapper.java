@@ -9,4 +9,6 @@ public interface CommunityMapper extends BaseMapper<Community> {
     List<Community> getTopCommunity();
 
     Community getById(Integer id);
+
+    List<Community> getCommunityLikeName(String name);
 }

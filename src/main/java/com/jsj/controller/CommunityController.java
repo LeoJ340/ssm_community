@@ -30,4 +30,10 @@ public class CommunityController {
         model.addAttribute("communityInvitations", communityService.getCommunityInvitations(communityId));
         return "community";
     }
+
+    @RequestMapping(method = RequestMethod.GET,value = "search")
+    public String string(Model model,String name){
+        model.addAttribute("communites", communityService.getCommunites(name));
+        return "search";
+    }
 }

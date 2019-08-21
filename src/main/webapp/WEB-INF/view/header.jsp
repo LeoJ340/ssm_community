@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -10,12 +9,19 @@
     <div class="container d-flex">
         <a href="${pageContext.request.contextPath}/index">首页</a>
         <div class="flex-grow-1 d-flex justify-content-end">
-            <form class="d-flex flex-wrap align-content-center m-0">
-                <input type="text" placeholder="搜索你想要找的社区">
+            <form class="d-flex flex-wrap align-content-center m-0" action="${pageContext.request.contextPath}/search">
+                <input type="text" placeholder="搜索你想要找的社区" name="name">
                 <input type="submit">
             </form>
-            <a href="">登录</a>
-            <a href="">注册</a>
+            <c:choose>
+                <c:when test="${sessionScope.userStatus}">
+                    <span>消息</span>
+                </c:when>
+                <c:otherwise>
+                    <a href="${pageContext.request.contextPath}/toLogin">登录</a>
+                    <a href="${pageContext.request.contextPath}/toRegister">注册</a>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
 </header>

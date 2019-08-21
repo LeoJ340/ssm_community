@@ -33,5 +33,10 @@
                 AND comment.`id` = #{commentId}
     </select>
 
+    <insert id="insertUser" parameterType="User">
+        INSERT INTO user(username,password,birthday,email,tel_number)
+        VALUES(#{username},#{password},#{birthday},#{email},#{telNumber})
+    </insert>
+
 </mapper>
 

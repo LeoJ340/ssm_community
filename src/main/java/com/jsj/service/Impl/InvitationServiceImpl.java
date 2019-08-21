@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service(value = "invitationService")
+@Service
 @Transactional
 public class InvitationServiceImpl implements InvitationService {
 
@@ -37,7 +37,6 @@ public class InvitationServiceImpl implements InvitationService {
         invitationComment.setTime(invitationUserCommunity.getTime());
         invitationComment.setCommunityId(invitationUserCommunity.getCommunityId());
         invitationComment.setCommunity(invitationUserCommunity.getCommunity());
-        invitationComment.setStatus(invitationUserCommunity.getStatus());
         invitationComment.setUsername(invitationUserCommunity.getUsername());
         invitationComment.setPhotoUrl(invitationUserCommunity.getPhotoUrl());
         invitationComment.setCommentUsers(commentService.getCommentUser(invitationId));
