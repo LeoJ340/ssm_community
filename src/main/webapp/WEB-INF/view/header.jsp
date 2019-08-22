@@ -15,11 +15,11 @@
             </form>
             <c:choose>
                 <c:when test="${sessionScope.userStatus}">
-                    <span>消息</span>
+                    <span>${sessionScope.username}</span>
                 </c:when>
                 <c:otherwise>
-                    <a href="${pageContext.request.contextPath}/toLogin">登录</a>
-                    <a href="${pageContext.request.contextPath}/toRegister">注册</a>
+                    <a href="${pageContext.request.contextPath}/login">登录</a>
+                    <a href="${pageContext.request.contextPath}/register">注册</a>
                 </c:otherwise>
             </c:choose>
         </div>

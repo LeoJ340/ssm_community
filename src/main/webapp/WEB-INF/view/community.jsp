@@ -35,10 +35,10 @@
         </ul>
         <h5>发表回复</h5>
         <form method="post" action="${pageContext.request.contextPath}/publishInvitation">
-            <input type="text" maxlength="50" placeholder="请输入标题" class="w-100 pl-3 mt-3 mb-3 title" name="title" />
+            <input type="text" maxlength="50" placeholder="请输入标题" class="w-100 pl-3 mt-3 mb-3 title" name="title"id="title" />
             <div id="contentEidtor"></div>
             <textarea id="content" style="display: none" name="content"></textarea>
-            <button type="submit" class="mt-3 btn btn-danger">发表</button>
+            <button type="submit" class="mt-3 btn btn-danger" id="publishButton">发表</button>
         </form>
     </div>
 </main>
@@ -46,14 +46,20 @@
 <script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/wangEditor/wangEditor.min.js"></script>
 <script>
-    const E = window.wangEditor;
-    const editor = new E('#contentEidtor');
-    const $text1 = $('#content');
+    let E = window.wangEditor;
+    let editor = new E('#contentEidtor');
+    let $text1 = $('#content');
     editor.customConfig.onchange = function(html) {
         $text1.val(html)
     };
     editor.create();
-    $text1.val(editor.txt.html())
+    $text1.val(editor.txt.html());
+    if (${empty sessionScope.userStatus}){
+        editor.txt.html("你还没有登录");
+        editor.$textElem.attr('contenteditable', false);
+        $("#title").attr("disabled",true);
+        $("publishButton").attr("disabled",true);
+    }
 </script>
 </body>
 </html>
