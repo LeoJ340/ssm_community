@@ -13,4 +13,6 @@ public interface InvitationMapper extends BaseMapper<Invitation> {
     InvitationUserCommunity getInvitationUserCommunityById(int invitationId);
 
     List<InvitationUser> getInvitationUsersByCommunityId(int communityId);
+
+    int insert(Invitation invitation);
 }

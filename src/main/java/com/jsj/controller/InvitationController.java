@@ -1,5 +1,6 @@
 package com.jsj.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.jsj.bean.Invitation;
 import com.jsj.service.InvitationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class InvitationController {
@@ -22,9 +24,9 @@ public class InvitationController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "publishInvitation")
+    @ResponseBody
     public String string(Invitation invitation){
-
-        return "";
+        return JSON.toJSONString(invitationService.publish(invitation));
     }
 
 }

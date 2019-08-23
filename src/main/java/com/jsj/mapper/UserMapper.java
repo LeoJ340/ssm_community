@@ -11,5 +11,5 @@ public interface UserMapper extends BaseMapper<User> {
 
     User getUserByCommentId(Integer commentId);
 
-    int insertUser(User user);
+    int insert(User user);
 }

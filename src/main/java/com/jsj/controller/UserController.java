@@ -61,6 +61,7 @@ public class UserController {
             }
             request.getSession().setAttribute("userStatus", true);
             request.getSession().setAttribute("username", map.get("username"));
+            request.getSession().setAttribute("userId", map.get("userId"));
         }
         return JSON.toJSONString(map);
     }
@@ -69,5 +70,13 @@ public class UserController {
     @ResponseBody
     public String register(User user){
         return JSON.toJSONString(userService.register(user));
+    }
+
+    @RequestMapping("logout")
+    public String logout(HttpServletRequest request) {
+        request.getSession().removeAttribute("userStatus");
+        request.getSession().removeAttribute("username");
+        request.getSession().removeAttribute("userId");
+        return "login";
     }
 }

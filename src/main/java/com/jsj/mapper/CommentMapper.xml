@@ -43,6 +43,33 @@
                 AND comment.`cin_id` = #{cin_id}
     </select>
 
+    <insert id="insert" parameterType="Comment">
+        INSERT INTO COMMENT (
+            invitation_id,
+            user_id,
+        <if test="cinId!=null">
+            cin_id,
+        </if>
+        <if test="cforId!=null">
+            cfor_id,
+        </if>
+            time,
+            content
+        )
+        VALUES(
+            #{invitationId},
+            #{userId},
+        <if test="cinId!=null">
+            #{cinId},
+        </if>
+        <if test="cforId!=null">
+            #{cforId},
+        </if>
+            #{time},
+            #{content}
+        )
+    </insert>
+
 
 </mapper>
 

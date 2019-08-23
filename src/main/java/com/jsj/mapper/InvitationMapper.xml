@@ -66,4 +66,10 @@
                 AND invitation.`community_id` = #{communityId}
         ORDER BY TIME DESC
     </select>
+
+    <insert id="insert" parameterType="Invitation">
+        INSERT INTO invitation(community_id,user_id,title,time,content)
+        VALUES(#{communityId},#{userId},#{title},#{time},#{content})
+    </insert>
+
 </mapper>

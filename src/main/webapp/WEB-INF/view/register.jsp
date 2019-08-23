@@ -45,8 +45,8 @@
 
     <div class="form-label-group mb-3">
         <span class="text-danger">*</span>
-        <label for="tel-number">联系电话：</label>
-        <input type="tel" id="tel-number" class="form-control" placeholder="请输入您的联系电话">
+        <label for="telNumber">联系电话：</label>
+        <input type="tel" id="telNumber" class="form-control" placeholder="请输入您的联系电话">
     </div>
 
     <button class="btn btn-lg btn-primary btn-block" type="button" onclick="register()">注册</button>
@@ -75,7 +75,7 @@
             };
             alert(user);
             $.ajax({
-                url:"register.do",
+                url:"/register.do",
                 type:"POST",
                 data:user,
                 dataType:"json",

@@ -24,6 +24,7 @@ public class UserServiceImpl implements UserService {
         if (user!=null){
             map.put("success",true);
             map.put("username",user.getUsername());
+            map.put("userId", user.getId());
             map.put("message","登录成功");
         }else {
             map.put("success",false);
@@ -35,7 +36,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Map<String,Object> register(User user) {
         Map<String, Object> map = new HashMap<>();
-        if (userMapper.insertUser(user)>0){
+        if (userMapper.insert(user)>0){
             map.put("success",true);
             map.put("message","注册成功");
         }else {

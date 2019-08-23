@@ -16,6 +16,7 @@
             <c:choose>
                 <c:when test="${sessionScope.userStatus}">
                     <span>${sessionScope.username}</span>
+                    <a href="${pageContext.request.contextPath}/logout">注销</a>
                 </c:when>
                 <c:otherwise>
                     <a href="${pageContext.request.contextPath}/login">登录</a>

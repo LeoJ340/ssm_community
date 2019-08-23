@@ -10,4 +10,6 @@ public interface CommentMapper extends BaseMapper<Comment> {
     List<CommentUser> getFirstComment(int invitationId);
 
     List<CommentUser> getSubordinateComment(int cinId);
+
+    int insert(Comment comment);
 }
