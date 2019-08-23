@@ -42,7 +42,6 @@ public class InvitationServiceImpl implements InvitationService {
         invitationComment.setCommunityId(invitationUserCommunity.getCommunityId());
         invitationComment.setCommunity(invitationUserCommunity.getCommunity());
         invitationComment.setUsername(invitationUserCommunity.getUsername());
-        invitationComment.setPhotoUrl(invitationUserCommunity.getPhotoUrl());
         invitationComment.setCommentUsers(commentService.getCommentUser(invitationId));
         return invitationComment;
     }

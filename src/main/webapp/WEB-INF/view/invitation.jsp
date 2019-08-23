@@ -12,7 +12,7 @@
 <%@include file="header.jsp"%>
 <main class="container mt-3">
     <div class="bg-light pl-3 pr-3 pt-3 mt-2">
-        <div class="border bg-transparent">
+        <div class="p-3 border bg-transparent">
             <h5>${invitationComment.community.name}社区</h5>
             <p>
                 <c:choose>
@@ -21,41 +21,44 @@
                 </c:choose>
             </p>
         </div>
-        <h5 class="mt-3 mb-1 p-3 border">${invitationComment.title}</h5>
+        <h5 class="mt-3 mb-0 p-3 border">${invitationComment.title}</h5>
         <ul class="border p-0">
             <li class="row p-3 border-bottom d-flex flex-nowrap">
                 <%--用户信息--%>
-                <div class="p-3 d-flex flex-column">
+                <div class="col-1 p-0 bg-info d-flex flex-column">
                     <span class="text-center">${invitationComment.username}</span>
                 </div>
                 <div class="flex-grow-1 ml-3 d-flex flex-column">
                     <p style="word-break: break-all;">${invitationComment.content}</p>
-                    <span class="flex-grow-1 d-flex align-self-end justify-content-end mr-3 mt-5">${invitationComment.time}</span>
+                    <span class="flex-grow-1 d-flex align-self-end justify-content-end mr-3 mt-5 time">${invitationComment.time}</span>
                 </div>
             </li>
             <c:forEach items="${invitationComment.commentUsers}" var="commentUser">
                 <li class="row p-3 border-bottom d-flex flex-nowrap">
-                    <div class="p-3 d-flex flex-column">
+                    <div class="col-1 p-0 bg-info d-flex flex-column">
                         <span class="text-center">${commentUser.username}</span>
                     </div>
                     <div class="flex-grow-1 ml-3 d-flex flex-column">
                         <p style="word-break: break-all;">${commentUser.content}</p>
-                        <span class="flex-grow-1 d-flex align-self-end justify-content-end mr-3">${commentUser.time}</span>
+                        <span class="flex-grow-1 d-flex align-self-end justify-content-end mr-3 time">${commentUser.time}</span>
                         <div>
                             <button class="btn btn-primary d-flex justify-content-end" type="button" data-toggle="collapse" data-target="#comment${commentUser.id}">回复</button>
                             <div class="collapse" id="comment${commentUser.id}">
                                 <div class="card card-body">
                                     <ul>
                                         <c:forEach items="${commentUser.commentUsers}" var="comment">
-                                            <li>
-                                                <span>${comment.username}:
+                                            <li class="row">
+                                                <span>
+                                                    <a class="text-primary">${comment.username}</a>:
                                                     <c:if test="${comment.cforId!=comment.cinId}">
-                                                        回复 ${comment.cforUsername}:
+                                                        回复<a class="text-primary">${comment.cforUsername}</a> :
                                                     </c:if>
                                                     ${comment.content}
                                                 </span>
-                                                <span>${comment.time}</span>
-                                                <button onclick="toCommentFor(${commentUser.id},${comment.id},'${comment.username}')">回复</button>
+                                                <div class="flex-grow-1 d-flex justify-content-end mr-3">
+                                                    <span class="time">${comment.time}</span>
+                                                    <a class="ml-1 time" onclick="toCommentFor(${commentUser.id},${comment.id},'${comment.username}')" href="javascript:void(0)">回复</a>
+                                                </div>
                                             </li>
                                         </c:forEach>
                                     </ul>

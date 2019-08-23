@@ -13,7 +13,6 @@
         <result column="time" property="time"/>
         <!--关联用户信息-->
         <result column="username" property="username"/>
-        <result column="photo_url" property="photoUrl"/>
         <!--关联社区信息-->
         <association property="community" javaType="Community">
             <id column="id" property="id"/>
@@ -43,8 +42,7 @@
         SELECT
             invitation.*,
             community.*,
-            user.`username`,
-            user.`photo_url`
+            user.`username`
         FROM
             invitation,
             community,
@@ -57,8 +55,7 @@
     <select id="getInvitationUsersByCommunityId" parameterType="int" resultType="InvitationUser">
         SELECT
             invitation.*,
-            user.`username`,
-            user.`photo_url`
+            user.`username`
         FROM
             invitation
             INNER JOIN user

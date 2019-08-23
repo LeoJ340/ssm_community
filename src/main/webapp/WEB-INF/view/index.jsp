@@ -55,8 +55,10 @@
                 <li class="d-flex flex-column border-bottom">
                     <span><a href="/community/${invitation.communityId}" class="bg-dark text-white">${invitation.community.name}社区</a></span>
                     <span><a href="/invitation/${invitation.id}">${invitation.title}</a></span>
-                    <span class="content">${invitation.content}</span>
-                    <span class="d-flex justify-content-end">${invitation.time}</span>
+                    <div class="row pr-3 pl-3">
+                        <span class="content">${invitation.content}</span>
+                        <span class="flex-grow-1 d-flex justify-content-end time">${invitation.time}</span>
+                    </div>
                 </li>
             </c:forEach>
         </ul>

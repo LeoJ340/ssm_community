@@ -9,8 +9,6 @@ public class CommentUser extends Comment {
 
     private String username;
 
-    private String photoUrl;
-
     private String cforUsername;
 
     private List<CommentUser> commentUsers;
@@ -21,14 +19,6 @@ public class CommentUser extends Comment {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPhotoUrl() {
-        return photoUrl;
-    }
-
-    public void setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl;
     }
 
     public String getCforUsername() {

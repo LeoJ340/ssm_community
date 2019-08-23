@@ -12,7 +12,7 @@
 <%@include file="header.jsp"%>
 <main class="container mt-3">
     <div class="bg-light pl-3 pr-3 pt-3 mt-2">
-        <div class="border bg-transparent">
+        <div class="border bg-transparent p-3">
             <h5>${communityInvitations.name}社区</h5>
             <p>
                 <c:choose>
@@ -21,15 +21,17 @@
                 </c:choose>
             </p>
         </div>
-        <ul>
+        <ul class="mt-3">
             <c:forEach items="${communityInvitations.invitationUsers}" var="invitationUser">
                 <li class="d-flex flex-column border-bottom">
-                    <span class="row">
+                    <div class="row">
                         <a class="text-primary" href="/invitation/${invitationUser.id}">${invitationUser.title}</a>
-                        <span>${invitationUser.username}</span>
-                    </span>
-                    <span class="content">${invitationUser.content}</span>
-                    <span class="d-flex justify-content-end">${invitationUser.time}</span>
+                        <span class="flex-grow-1 d-flex justify-content-end pr-3 time">${invitationUser.username}</span>
+                    </div>
+                    <div class="row">
+                        <span class="content">${invitationUser.content}</span>
+                        <span class="flex-grow-1 d-flex justify-content-end pr-3 time">${invitationUser.time}</span>
+                    </div>
                 </li>
             </c:forEach>
         </ul>

@@ -7,8 +7,6 @@ public class InvitationUser extends Invitation {
 
     private String username;
 
-    private String photoUrl;
-
     public String getUsername() {
         return username;
     }
@@ -17,11 +15,4 @@ public class InvitationUser extends Invitation {
         this.username = username;
     }
 
-    public String getPhotoUrl() {
-        return photoUrl;
-    }
-
-    public void setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl;
-    }
 }

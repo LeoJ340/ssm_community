@@ -15,14 +15,12 @@
         <result column="content" property="content"/>
         <!--关联信息-->
         <result column="username" property="username"/>
-        <result column="photo_url" property="photoUrl"/>
     </resultMap>
 
     <select id="getFirstComment" parameterType="int" resultMap="CommentResultMap">
         SELECT
             comment.*,
-            user.`username`,
-            user.`photo_url`
+            user.`username`
         FROM
             comment
         INNER JOIN user
@@ -34,8 +32,7 @@
     <select id="getSubordinateComment" parameterType="int" resultMap="CommentResultMap">
         SELECT
             comment.*,
-            user.`username`,
-            user.`photo_url`
+            user.`username`
         FROM
             COMMENT
             INNER JOIN USER
