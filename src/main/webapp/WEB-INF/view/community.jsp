@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -30,7 +31,9 @@
                     </div>
                     <div class="row pl-3">
                         <span class="content">${invitationUser.content}</span>
-                        <span class="flex-grow-1 d-flex justify-content-end pr-3 time">${invitationUser.time}</span>
+                        <span class="flex-grow-1 d-flex justify-content-end pr-3 time">
+                            <fmt:formatDate value="${invitationUser.time}" pattern="yyyy-MM-dd hh:mm"/>
+                        </span>
                     </div>
                 </li>
             </c:forEach>

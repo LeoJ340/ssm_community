@@ -1,7 +1,5 @@
 package com.jsj.bean;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.util.Date;
 
 public class Invitation {
@@ -14,7 +12,6 @@ public class Invitation {
 
     private String title;
 
-    @DateTimeFormat(pattern = "yyyy-mm-dd HH:mm:ss")
     private Date time;
 
     private String content;

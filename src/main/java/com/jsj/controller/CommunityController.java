@@ -35,6 +35,9 @@ public class CommunityController {
         return "community";
     }
 
+    /**
+     * 搜索社区
+     */
     @RequestMapping(method = RequestMethod.GET,value = "search")
     public String searchCommunity(Model model,String name){
         model.addAttribute("communites", communityService.getCommunites(name));

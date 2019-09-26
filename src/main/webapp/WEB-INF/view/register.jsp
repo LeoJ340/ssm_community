@@ -81,7 +81,7 @@
                 success:function (response) {
                     if (response.success){
                         alert(response.message);
-                        window.location.href="/index";
+                        window.location.href="/";
                     }else {
                         alert(response.message);
                     }

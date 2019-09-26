@@ -5,6 +5,7 @@ import com.jsj.bean.Comment;
 import com.jsj.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,12 +17,16 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "getCommentUsers")
-    @ResponseBody
-    public String getCommentUsers(int cinId,
+    /**
+     * 评论区
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "getComments")
+    public String getCommentUsers(Model model, int cinId,
                                   @RequestParam(required = false,defaultValue = "1") int pageIndex,
                                   @RequestParam(required = false,defaultValue = "5") int pageSize){
-        return JSON.toJSONString(commentService.getCommentUserByCinId(cinId,pageIndex,pageSize));
+        model.addAttribute("comments",commentService.getCommentUserByCinId(cinId,pageIndex,pageSize));
+        model.addAttribute("cinId",cinId);
+        return "comment";
     }
 
     @RequestMapping("publishComment")

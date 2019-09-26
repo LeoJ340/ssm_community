@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -30,7 +31,9 @@
                 </div>
                 <div class="flex-grow-1 ml-3 d-flex flex-column">
                     <p style="word-break: break-all;">${invitation.content}</p>
-                    <span class="flex-grow-1 d-flex align-self-end justify-content-end mr-3 mt-5 time">${invitation.time}</span>
+                    <span class="flex-grow-1 d-flex align-self-end justify-content-end mr-3 mt-5 time">
+                        <fmt:formatDate value="${invitation.time}" pattern="yyyy-MM-dd hh:mm"/>
+                    </span>
                 </div>
             </li>
             <c:forEach items="${comments.list}" var="commentUser">
@@ -40,13 +43,14 @@
                     </div>
                     <div class="flex-grow-1 ml-3 d-flex flex-column">
                         <p style="word-break: break-all;">${commentUser.content}</p>
-                        <span class="flex-grow-1 d-flex align-self-end justify-content-end mr-3 time">${commentUser.time}</span>
+                        <span class="flex-grow-1 d-flex align-self-end justify-content-end mr-3 time">
+                            <fmt:formatDate value="${commentUser.time}" pattern="yyyy-MM-dd hh:mm"/>
+                        </span>
                         <div>
                             <button class="btn btn-primary d-flex justify-content-end" type="button"
                                     data-toggle="collapse" data-target="#comment${commentUser.id}" onclick="showComment(${commentUser.id})">回复</button>
                             <div class="collapse" id="comment${commentUser.id}">
                                 <%--楼中评论区--%>
-                                <div class="card card-body"></div>
                             </div>
                         </div>
                     </div>
@@ -54,58 +58,60 @@
             </c:forEach>
         </ul>
         <%--分页条--%>
-        <nav aria-label="Page navigation example" class="mt-3 pb-1">
-            <ul class="pagination">
-                <c:choose>
-                    <c:when test="${comments.prePage < 1}">
-                        <li class="page-item disabled" data-toggle="tooltip" data-placement="left" title="没有上一页">
-                            <a class="page-link" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                        </li>
-                    </c:when>
-                    <c:otherwise>
-                        <li class="page-item">
-                            <a class="page-link" href="/invitation/${invitation.id}?pageIndex=${comments.prePage}" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                        </li>
-                    </c:otherwise>
-                </c:choose>
-
-                <c:forEach var="index" begin="1" end="${comments.pages}">
+        <c:if test="${!empty comments.list && comments.list.size() > 0}">
+            <nav aria-label="Page navigation example" class="mt-3 pb-1">
+                <ul class="pagination">
                     <c:choose>
-                        <c:when test="${index eq comments.pageNum}">
-                            <li class="page-item active"><a class="page-link" href="/invitation/${invitation.id}?pageIndex=${index}">${index}</a></li>
+                        <c:when test="${comments.prePage < 1}">
+                            <li class="page-item disabled" data-toggle="tooltip" data-placement="left" title="没有上一页">
+                                <a class="page-link" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
                         </c:when>
                         <c:otherwise>
-                            <li class="page-item"><a class="page-link" href="/invitation/${invitation.id}?pageIndex=${index}">${index}</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="/invitation/${invitation.id}?pageIndex=${comments.prePage}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
                         </c:otherwise>
                     </c:choose>
-                </c:forEach>
 
-                <c:choose>
-                    <c:when test="${comments.pageNum >= comments.nextPage}">
-                        <li class="page-item disabled" data-toggle="tooltip" data-placement="right" title="没有下一页">
-                            <a class="page-link" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </li>
-                    </c:when>
-                    <c:otherwise>
-                        <li class="page-item">
-                            <a class="page-link" href="/invitation/${invitation.id}?pageIndex=${comments.nextPage}" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </li>
-                    </c:otherwise>
-                </c:choose>
-            </ul>
-        </nav>
+                    <c:forEach var="index" begin="1" end="${comments.pages}">
+                        <c:choose>
+                            <c:when test="${index eq comments.pageNum}">
+                                <li class="page-item active"><a class="page-link" href="/invitation/${invitation.id}?pageIndex=${index}">${index}</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li class="page-item"><a class="page-link" href="/invitation/${invitation.id}?pageIndex=${index}">${index}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+
+                    <c:choose>
+                        <c:when test="${comments.pageNum >= comments.nextPage}">
+                            <li class="page-item disabled" data-toggle="tooltip" data-placement="right" title="没有下一页">
+                                <a class="page-link" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="page-item">
+                                <a class="page-link" href="/invitation/${invitation.id}?pageIndex=${comments.nextPage}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+                </ul>
+            </nav>
+        </c:if>
     </div>
 </main>
 <div class="container mt-3">
@@ -130,29 +136,38 @@
     editor.create();
     $text1.val(editor.txt.html());
 
+    // 全局变量---用户状态
+    let userStatus = ${empty sessionScope.userStatus};
+
     // 用户未登录，禁用评论功能
-    if (${empty sessionScope.userStatus}){
+    if (userStatus){
         editor.txt.html("你还没有登录");
         editor.$textElem.css("text-align","center");
         editor.$textElem.attr('contenteditable', false);
+        disabledButton();
+    }
+
+    function disabledButton() {
         // 批量禁用所有按钮
         let publishButtons = document.getElementsByName("publishButton");
         for(let i = 0;i<publishButtons.length;i++){
             publishButtons[i].setAttribute("disabled","disabled");
         }
     }
+
     // 局部渲染评论
-    function showComment(commentId) {
-        $.ajax({
-            url:"/getCommentUsers",
-            data:{
-                cinId:commentId
-            },
-            type:"GET",
-            success:function (response) {
-                console.log(response);
+    function showComment(commentId,pageIndex,pageSize) {
+        $.get("/getComments",
+            {
+                cinId:commentId,
+                pageIndex:pageIndex,
+                pageSize:pageSize
+            }, function (response) {
+            $("#comment"+commentId).html(response);
+            if (userStatus){
+                disabledButton();
             }
-        })
+        });
     }
 
     // 发表第一层评论
@@ -177,11 +192,15 @@
             }
         })
     }
+
+    // 层中选择评论对象
     function toCommentFor(cinId,cforId,cforUsername) {
         let cfor = $("#comment"+cinId).find("form").find("span");
         cfor.text("回复:"+cforUsername);
         cfor.attr("id",cforId);
     }
+
+    // 发表评论
     function publishComment(cinId) {
         let cforId = $("#comment"+cinId).find("form").find("span").attr("id");
         let comment = {
@@ -205,7 +224,7 @@
                 console.log(response);
                 if (response.success){
                     alert(response.message);
-                    window.location.reload();
+                    showComment(cinId);
                 } else {
                     alert(response.message);
                 }
