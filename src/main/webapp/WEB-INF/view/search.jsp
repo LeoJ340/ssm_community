@@ -12,7 +12,7 @@
 <%@include file="header.jsp"%>
 <main class="container mt-3">
     <div class="bg-light pl-3 pr-3 pt-3 mt-2">
-        <h5>搜索结果</h5>
+        <h5>搜索结果：共${communites.size()}条</h5>
         <ul>
             <c:forEach items="${communites}" var="community">
                 <li class="d-flex flex-column border-bottom">

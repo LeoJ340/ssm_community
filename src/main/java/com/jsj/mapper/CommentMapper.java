@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface CommentMapper extends BaseMapper<Comment> {
 
-    List<CommentUser> getFirstComment(int invitationId);
+    List<CommentUser> getCommentsByInvitationId(int invitationId);
 
-    List<CommentUser> getSubordinateComment(int cinId);
+    List<CommentUser> getCommentByCinId(int cinId);
 
     int insert(Comment comment);
 }

@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>${invitationComment.title}</title>
+    <title>${invitation.title}</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/style.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/header.css">
@@ -13,27 +13,27 @@
 <main class="container mt-3">
     <div class="bg-light pl-3 pr-3 pt-3 mt-2">
         <div class="p-3 border bg-transparent">
-            <h5>${invitationComment.community.name}社区</h5>
+            <h5><a href="/community/${community.id}">${community.name}社区</a></h5>
             <p>
                 <c:choose>
-                    <c:when test="${empty invitationComment.community.introduction}">暂无简介</c:when>
-                    <c:otherwise>${invitationComment.community.introduction}</c:otherwise>
+                    <c:when test="${empty community.introduction}">暂无简介</c:when>
+                    <c:otherwise>${community.introduction}</c:otherwise>
                 </c:choose>
             </p>
         </div>
-        <h5 class="mt-3 mb-0 p-3 border">${invitationComment.title}</h5>
+        <h5 class="mt-3 mb-0 p-3 border">${invitation.title}</h5>
         <ul class="border p-0">
             <li class="row p-3 border-bottom d-flex flex-nowrap">
                 <%--用户信息--%>
                 <div class="col-1 p-0 bg-info d-flex flex-column">
-                    <span class="text-center">${invitationComment.username}</span>
+                    <span class="text-center">${invitation.username}</span>
                 </div>
                 <div class="flex-grow-1 ml-3 d-flex flex-column">
-                    <p style="word-break: break-all;">${invitationComment.content}</p>
-                    <span class="flex-grow-1 d-flex align-self-end justify-content-end mr-3 mt-5 time">${invitationComment.time}</span>
+                    <p style="word-break: break-all;">${invitation.content}</p>
+                    <span class="flex-grow-1 d-flex align-self-end justify-content-end mr-3 mt-5 time">${invitation.time}</span>
                 </div>
             </li>
-            <c:forEach items="${invitationComment.commentUsers}" var="commentUser">
+            <c:forEach items="${comments.list}" var="commentUser">
                 <li class="row p-3 border-bottom d-flex flex-nowrap">
                     <div class="col-1 p-0 bg-info d-flex flex-column">
                         <span class="text-center">${commentUser.username}</span>
@@ -42,41 +42,73 @@
                         <p style="word-break: break-all;">${commentUser.content}</p>
                         <span class="flex-grow-1 d-flex align-self-end justify-content-end mr-3 time">${commentUser.time}</span>
                         <div>
-                            <button class="btn btn-primary d-flex justify-content-end" type="button" data-toggle="collapse" data-target="#comment${commentUser.id}">回复</button>
+                            <button class="btn btn-primary d-flex justify-content-end" type="button"
+                                    data-toggle="collapse" data-target="#comment${commentUser.id}" onclick="showComment(${commentUser.id})">回复</button>
                             <div class="collapse" id="comment${commentUser.id}">
-                                <div class="card card-body">
-                                    <ul>
-                                        <c:forEach items="${commentUser.commentUsers}" var="comment">
-                                            <li class="row">
-                                                <span>
-                                                    <a class="text-primary">${comment.username}</a>:
-                                                    <c:if test="${comment.cforId!=comment.cinId}">
-                                                        回复<a class="text-primary">${comment.cforUsername}</a> :
-                                                    </c:if>
-                                                    ${comment.content}
-                                                </span>
-                                                <div class="flex-grow-1 d-flex justify-content-end mr-3">
-                                                    <span class="time">${comment.time}</span>
-                                                    <a class="ml-1 time" onclick="toCommentFor(${commentUser.id},${comment.id},'${comment.username}')" href="javascript:void(0)">回复</a>
-                                                </div>
-                                            </li>
-                                        </c:forEach>
-                                    </ul>
-                                    <form>
-                                        <span></span>
-                                        <textarea rows="1" maxlength="100" class="w-100"></textarea>
-                                        <input name="publishButton" type="button" value="回复" onclick="publishComment(${commentUser.id})">
-                                    </form>
-                                </div>
+                                <%--楼中评论区--%>
+                                <div class="card card-body"></div>
                             </div>
                         </div>
                     </div>
                 </li>
             </c:forEach>
         </ul>
+        <%--分页条--%>
+        <nav aria-label="Page navigation example" class="mt-3 pb-1">
+            <ul class="pagination">
+                <c:choose>
+                    <c:when test="${comments.prePage < 1}">
+                        <li class="page-item disabled" data-toggle="tooltip" data-placement="left" title="没有上一页">
+                            <a class="page-link" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item">
+                            <a class="page-link" href="/invitation/${invitation.id}?pageIndex=${comments.prePage}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+
+                <c:forEach var="index" begin="1" end="${comments.pages}">
+                    <c:choose>
+                        <c:when test="${index eq comments.pageNum}">
+                            <li class="page-item active"><a class="page-link" href="/invitation/${invitation.id}?pageIndex=${index}">${index}</a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="page-item"><a class="page-link" href="/invitation/${invitation.id}?pageIndex=${index}">${index}</a></li>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+
+                <c:choose>
+                    <c:when test="${comments.pageNum >= comments.nextPage}">
+                        <li class="page-item disabled" data-toggle="tooltip" data-placement="right" title="没有下一页">
+                            <a class="page-link" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item">
+                            <a class="page-link" href="/invitation/${invitation.id}?pageIndex=${comments.nextPage}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+            </ul>
+        </nav>
     </div>
 </main>
-<div class="container">
+<div class="container mt-3">
     <h5>发表评论</h5>
     <form method="post" action="${pageContext.request.contextPath}/publishInvitation">
         <div id="contentEidtor"></div>
@@ -97,6 +129,7 @@
     };
     editor.create();
     $text1.val(editor.txt.html());
+
     // 用户未登录，禁用评论功能
     if (${empty sessionScope.userStatus}){
         editor.txt.html("你还没有登录");
@@ -108,10 +141,24 @@
             publishButtons[i].setAttribute("disabled","disabled");
         }
     }
+    // 局部渲染评论
+    function showComment(commentId) {
+        $.ajax({
+            url:"/getCommentUsers",
+            data:{
+                cinId:commentId
+            },
+            type:"GET",
+            success:function (response) {
+                console.log(response);
+            }
+        })
+    }
+
     // 发表第一层评论
     function publishFirstComment() {
         let firstComment = {
-            invitationId:${invitationComment.id},
+            invitationId:${invitation.id},
             <c:if test="${sessionScope.userId!=null}">userId:${sessionScope.userId},</c:if>
             content:$("#content").val()
         };
@@ -138,7 +185,7 @@
     function publishComment(cinId) {
         let cforId = $("#comment"+cinId).find("form").find("span").attr("id");
         let comment = {
-            invitationId: ${invitationComment.id},
+            invitationId: ${invitation.id},
             cinId:cinId,
             <c:if test="${sessionScope.userId!=null}">userId:${sessionScope.userId},</c:if>
             content: $("#comment"+cinId).find("form").find("textarea").val()

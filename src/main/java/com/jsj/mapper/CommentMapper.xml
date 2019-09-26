@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jsj.mapper.CommentMapper">
 
-
+    <!--包含用户信息的评论-->
     <resultMap id="CommentResultMap" type="CommentUser">
         <id column="id" property="id"/>
         <result column="invitation_id" property="invitationId"/>
@@ -17,7 +17,8 @@
         <result column="username" property="username"/>
     </resultMap>
 
-    <select id="getFirstComment" parameterType="int" resultMap="CommentResultMap">
+    <!--第一层评论-->
+    <select id="getCommentsByInvitationId" parameterType="int" resultMap="CommentResultMap">
         SELECT
             comment.*,
             user.`username`
@@ -29,7 +30,8 @@
             AND cin_id IS NULL
     </select>
 
-    <select id="getSubordinateComment" parameterType="int" resultMap="CommentResultMap">
+    <!--下级评论-->
+    <select id="getCommentByCinId" parameterType="int" resultMap="CommentResultMap">
         SELECT
             comment.*,
             user.`username`

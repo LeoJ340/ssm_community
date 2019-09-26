@@ -7,25 +7,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a4ba29a-b15d-4b05-ae82-225f472591ca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jsj/controller/CommentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/comment.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jsj/bean/CommentUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jsj/bean/CommentUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jsj/bean/CommunityInvitations.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jsj/bean/InvitationComment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jsj/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jsj/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jsj/controller/CommunityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jsj/controller/CommunityController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jsj/controller/InvitationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jsj/controller/InvitationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jsj/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jsj/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jsj/mapper/CommentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jsj/mapper/CommentMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jsj/mapper/CommentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jsj/mapper/CommentMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jsj/mapper/InvitationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jsj/mapper/InvitationMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jsj/mapper/InvitationMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jsj/mapper/InvitationMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jsj/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jsj/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jsj/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jsj/mapper/UserMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jsj/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jsj/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jsj/service/CommunityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jsj/service/CommunityService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/CommunityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/CommunityServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/InvitationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/InvitationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jsj/service/InvitationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jsj/service/InvitationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/community.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/community.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/invitation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/invitation.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/search.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/search.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -53,69 +60,24 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/service/CommentService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/service/CommunityService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/service/InvitationService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/service/UserService.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/controller/CommentController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="242">
-              <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/community.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="64" column="5" lean-forward="true" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/header.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/invitation.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="25" column="14" lean-forward="true" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+            <state relative-caret-position="2146">
+              <caret line="126" column="31" selection-start-line="126" selection-start-column="31" selection-end-line="126" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -129,9 +91,9 @@
         <option value="FxmlFile" />
         <option value="XSLT Stylesheet" />
         <option value="Tag Library Descriptor" />
-        <option value="Jsp File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -139,60 +101,63 @@
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/search.jsp" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/jsj/bean/CommunityVo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jsj/bean/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jsj/mapper/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jsj/mapper/UserMapper.tld" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/css/style.css" />
         <option value="$PROJECT_DIR$/src/main/resources/SpringMvc.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/test.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/jsj/bean/InvitationUserVo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jsj/bean/InvitationCommunity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jsj/bean/CommentVo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jsj/bean/InvitationUserCommunity.java" />
         <option value="$PROJECT_DIR$/test/CommentTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jsj/bean/CommentUser.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jsj/bean/InvitationComment.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jsj/bean/CommunityInvitations.java" />
-        <option value="$PROJECT_DIR$/test/ServiceTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jsj/bean/InvitationUser.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jsj/mapper/CommunityMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jsj/service/CommunityService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jsj/controller/CommunityController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/search.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/jsj/bean/Community.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jsj/bean/Invitation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/CommunityServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jsj/mapper/CommunityMapper.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/test/test.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/css/login.css" />
         <option value="$PROJECT_DIR$/src/main/java/com/jsj/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jsj/service/InvitationService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jsj/controller/InvitationController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jsj/controller/UserController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/register.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/header.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/community.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jsj/service/CommentService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jsj/controller/CommentController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/invitation.jsp" />
         <option value="$PROJECT_DIR$/test/DaoTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jsj/mapper/CommentMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jsj/mapper/CommentMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/CommentServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jsj/mapper/InvitationMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jsj/mapper/InvitationMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jsj/mapper/UserMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jsj/mapper/UserMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jsj/bean/InvitationUser.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/search.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/header.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/register.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/css/header.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/css/style.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jsj/mapper/InvitationMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jsj/service/InvitationService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jsj/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jsj/service/CommunityService.java" />
+        <option value="$PROJECT_DIR$/test/PageTest.java" />
+        <option value="$PROJECT_DIR$/test/ServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/InvitationServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/CommunityServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jsj/controller/InvitationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jsj/mapper/InvitationMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/community.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jsj/bean/CommentUser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jsj/mapper/CommentMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jsj/mapper/CommentMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/comment.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/CommentServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jsj/service/CommentService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jsj/controller/CommunityController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jsj/controller/CommentController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/invitation.jsp" />
       </list>
     </option>
   </component>
@@ -235,8 +200,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -277,6 +240,24 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="jsj" type="462c0819:PsiDirectoryNode" />
+              <item name="bean" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ssm_community" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssm_community" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="jsj" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ssm_community" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssm_community" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="jsj" type="462c0819:PsiDirectoryNode" />
               <item name="mapper" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -303,13 +284,6 @@
               <item name="ssm_community" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssm_community" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssm_community" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -329,15 +303,12 @@
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="ssm_community" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssm_community" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -359,21 +330,21 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
+    <property name="settings.editor.selected.configurable" value="com.nnthink.aixcoder.config.Config" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Workspace\IdeaProjects\ssm_community\test" />
-      <recent name="E:\Workspace\IdeaProjects\ssm_community" />
-      <recent name="E:\Workspace\IdeaProjects\ssm_community\src\main\webapp" />
-      <recent name="E:\Workspace\IdeaProjects\ssm_community\src\main\webapp\WEB-INF\static\css" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Workspace\IdeaProjects\ssm_community\src\main\webapp\static\css" />
       <recent name="E:\Workspace\IdeaProjects\ssm_community\src\main\webapp\static\images" />
       <recent name="E:\Workspace\IdeaProjects\ssm_community\src\main\webapp\WEB-INF\view" />
       <recent name="E:\Workspace\IdeaProjects\ssm_community\src\main\java\com\jsj\mapper" />
       <recent name="E:\Workspace\IdeaProjects\ssm_community\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Workspace\IdeaProjects\ssm_community\test" />
+      <recent name="E:\Workspace\IdeaProjects\ssm_community" />
+      <recent name="E:\Workspace\IdeaProjects\ssm_community\src\main\webapp" />
+      <recent name="E:\Workspace\IdeaProjects\ssm_community\src\main\webapp\WEB-INF\static\css" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -507,10 +478,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DaoTest.mapperTest" />
         <item itemvalue="JUnit.ServiceTest.test" />
-        <item itemvalue="Application.CommentTest" />
         <item itemvalue="JUnit.PageTest.test" />
+        <item itemvalue="JUnit.DaoTest.mapperTest" />
+        <item itemvalue="Application.CommentTest" />
       </list>
     </recent_temporary>
   </component>
@@ -529,7 +500,10 @@
       <workItem from="1566143499845" duration="35367000" />
       <workItem from="1566264116141" duration="43964000" />
       <workItem from="1566455810922" duration="17631000" />
-      <workItem from="1566528568089" duration="11171000" />
+      <workItem from="1566528568089" duration="23945000" />
+      <workItem from="1569228550647" duration="818000" />
+      <workItem from="1569377045258" duration="10226000" />
+      <workItem from="1569398694642" duration="18016000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization">
       <created>1566230887768</created>
@@ -552,16 +526,24 @@
       <option name="project" value="LOCAL" />
       <updated>1566465808403</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="发帖、评论功能">
+      <created>1566542059951</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1566542059951</updated>
+    </task>
+    <task id="LOCAL-00005" summary="优化UI">
+      <created>1566555208598</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1566555208598</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ServiceTest_test - 2019.08.20 at 23h 26m 49s.xml">
-      <configuration name="ServiceTest.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ServiceTest_test - 2019.08.20 at 23h 30m 10s.xml">
-      <configuration name="ServiceTest.test" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ServiceTest_test - 2019.08.20 at 23h 31m 35s.xml">
       <configuration name="ServiceTest.test" configurationId="JUnit" />
     </history-entry>
@@ -586,15 +568,21 @@
     <history-entry file="DaoTest_mapperTest - 2019.08.23 at 11h 30m 34s.xml">
       <configuration name="DaoTest.mapperTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="PageTest_test - 2019.09.26 at 08h 40m 35s.xml">
+      <configuration name="PageTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ServiceTest_test - 2019.09.26 at 08h 42m 11s.xml">
+      <configuration name="ServiceTest.test" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="146728000" />
+    <option name="totallyTimeSpent" value="188562000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21648793" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22453083" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -604,8 +592,8 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.49858356" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.6827195" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932975" weight="0.47450426" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.5042493" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -613,10 +601,10 @@
       <window_info anchor="bottom" id="Spring" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3286119" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50067025" side_tool="true" weight="0.47450426" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
-      <window_info anchor="bottom" id="Version Control" order="14" weight="0.27478755" />
+      <window_info anchor="bottom" id="Version Control" order="14" weight="0.28611898" />
       <window_info anchor="bottom" id="Messages" order="15" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -677,179 +665,23 @@
     <MESSAGE value="Initialization" />
     <MESSAGE value="基础UI，前台显示" />
     <MESSAGE value="用户模块" />
-    <option name="LAST_COMMIT_MESSAGE" value="用户模块" />
+    <MESSAGE value="发帖、评论功能" />
+    <MESSAGE value="优化UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化UI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/test/CommentTest.java</url>
-          <line>54</line>
+          <url>file://$PROJECT_DIR$/test/PageTest.java</url>
+          <line>26</line>
           <properties />
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/test/ServiceTest.java</url>
-          <line>30</line>
-          <properties />
-          <option name="timeStamp" value="27" />
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/bean/Comment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/bean/Community.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-          <folding>
-            <element signature="e#190#191#0" expanded="true" />
-            <element signature="e#215#216#0" expanded="true" />
-            <element signature="e#252#253#0" expanded="true" />
-            <element signature="e#280#281#0" expanded="true" />
-            <element signature="e#311#312#0" expanded="true" />
-            <element signature="e#338#339#0" expanded="true" />
-            <element signature="e#378#379#0" expanded="true" />
-            <element signature="e#410#411#0" expanded="true" />
-            <element signature="e#449#450#0" expanded="true" />
-            <element signature="e#484#485#0" expanded="true" />
-            <element signature="e#540#541#0" expanded="true" />
-            <element signature="e#588#589#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/bean/Invitation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="67" column="5" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/reflect/InvocationTargetException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="97" selection-start-line="97" selection-end-line="97" />
-          <folding>
-            <element signature="e#2547#2548#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/AbstractCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/HashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="865" selection-start-line="865" selection-end-line="865" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/LinkedHashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="464" selection-start-line="464" selection-end-line="464" />
-          <folding>
-            <element signature="e#23418#23419#0" expanded="true" />
-            <element signature="e#23474#23475#0" expanded="true" />
-            <element signature="e#28219#28220#0" expanded="true" />
-            <element signature="e#28262#28263#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/maven/repository/org/springframework/spring-web/4.3.18.RELEASE/spring-web-4.3.18.RELEASE-sources.jar!/org/springframework/web/context/request/AbstractRequestAttributes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="124" column="16" lean-forward="true" selection-start-line="124" selection-start-column="16" selection-end-line="124" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/login.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/search.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="747" selection-start-line="747" selection-end-line="747" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/maven/repository/org/springframework/spring-tx/4.3.18.RELEASE/spring-tx-4.3.18.RELEASE-sources.jar!/org/springframework/transaction/interceptor/TransactionAspectSupport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="289" selection-start-line="289" selection-end-line="289" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/maven/repository/org/springframework/spring-webmvc/4.3.18.RELEASE/spring-webmvc-4.3.18.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="834" selection-start-line="834" selection-end-line="834" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/maven/repository/org/springframework/spring-webmvc/4.3.18.RELEASE/spring-webmvc-4.3.18.RELEASE-sources.jar!/org/springframework/web/servlet/DispatcherServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="906" selection-start-line="906" selection-end-line="906" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/maven/repository/org/springframework/spring-webmvc/4.3.18.RELEASE/spring-webmvc-4.3.18.RELEASE-sources.jar!/org/springframework/web/servlet/FrameworkServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="1004" selection-start-line="1004" selection-end-line="1004" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://E:/maven/repository/org/springframework/spring-web/4.3.18.RELEASE/spring-web-4.3.18.RELEASE-sources.jar!/org/springframework/web/filter/OncePerRequestFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-585">
@@ -871,25 +703,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/converter/DateConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#354#355#0" expanded="true" />
-            <element signature="e#392#393#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/register.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="87" column="21" selection-start-line="87" selection-start-column="21" selection-end-line="87" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="438">
@@ -904,73 +717,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="17" column="35" lean-forward="true" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/invitation.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="143" column="36" lean-forward="true" selection-start-line="143" selection-start-column="36" selection-end-line="143" selection-end-column="36" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/DaoTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="66" column="5" lean-forward="true" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1430#1431#0" expanded="true" />
-            <element signature="e#1463#1464#0" expanded="true" />
-            <element signature="e#2592#2593#0" expanded="true" />
-            <element signature="e#2660#2661#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/controller/InvitationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="22" column="28" lean-forward="true" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1091#1092#0" expanded="true" />
-            <element signature="e#1170#1171#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/controller/CommunityController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/controller/CommentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="17" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -984,51 +734,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/mapper/CommentMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/mapper/CommentMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/mapper/CommunityMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/mapper/CommunityMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="57" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/mapper/InvitationMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/mapper/InvitationMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/mapper/UserMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -1039,79 +744,80 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/search.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="7" column="106" lean-forward="true" selection-start-line="7" selection-start-column="106" selection-end-line="7" selection-end-column="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.css" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="1" lean-forward="true" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/header.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/register.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/mapper/UserMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="35" column="22" lean-forward="true" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
+        <state relative-caret-position="132">
+          <caret line="21" column="4" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/CommentServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/bean/CommunityInvitations.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="924">
-          <caret line="42" column="36" lean-forward="true" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
+        <state relative-caret-position="154">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#206#207#0" expanded="true" />
+            <element signature="e#244#245#0" expanded="true" />
+            <element signature="e#320#321#0" expanded="true" />
+            <element signature="e#374#375#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/UserServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/mapper/CommunityMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="36" column="51" lean-forward="true" selection-start-line="36" selection-start-column="51" selection-end-line="36" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="88">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/InvitationServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/mapper/InvitationMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1100">
-          <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#826#827#0" expanded="true" />
-            <element signature="e#885#886#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/CommunityServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="28" column="13" lean-forward="true" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/service/CommentService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/service/CommunityService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/service/InvitationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="286">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1128,17 +834,286 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/community.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/service/InvitationService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="64" column="5" lean-forward="true" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
+        <state relative-caret-position="330">
+          <caret line="15" column="4" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/service/CommunityService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/bean/InvitationComment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/PageTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="18" column="25" lean-forward="true" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+          <folding>
+            <element signature="e#471#472#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#366#367#0" expanded="true" />
+            <element signature="e#439#440#0" expanded="true" />
+            <element signature="e#514#515#0" expanded="true" />
+            <element signature="e#611#612#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="568">
+          <caret line="50" column="36" lean-forward="true" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/bean/Comment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-466">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/bean/Community.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/bean/Invitation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1430#1431#0" expanded="true" />
+            <element signature="e#1463#1464#0" expanded="true" />
+            <element signature="e#2592#2593#0" expanded="true" />
+            <element signature="e#2660#2661#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/converter/DateConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#354#355#0" expanded="true" />
+            <element signature="e#392#393#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/header.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="25" column="14" lean-forward="true" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+        <state relative-caret-position="308">
+          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-22">
+          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/mapper/CommunityMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/mapper/InvitationMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="59" column="80" selection-start-line="59" selection-start-column="80" selection-end-line="59" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/CommunityServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#551#552#0" expanded="true" />
+            <element signature="e#607#608#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/community.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="72" column="29" selection-start-line="72" selection-start-column="29" selection-end-line="72" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/InvitationServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#805#806#0" expanded="true" />
+            <element signature="e#864#865#0" expanded="true" />
+            <element signature="e#937#938#0" expanded="true" />
+            <element signature="e#1002#1003#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/bean/InvitationUserCommunity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <element signature="e#156#157#0" expanded="true" />
+            <element signature="e#188#189#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/bean/InvitationUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/bean/CommentUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="21" selection-start-column="21" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/mapper/CommentMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="39" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/comment.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/mapper/CommentMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/service/CommentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="80" selection-start-line="12" selection-start-column="80" selection-end-line="12" selection-end-column="80" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/service/Impl/CommentServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/controller/InvitationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/controller/CommunityController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="32" column="70" selection-start-line="32" selection-start-column="70" selection-end-line="32" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jsj/controller/CommentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/invitation.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2146">
+          <caret line="126" column="31" selection-start-line="126" selection-start-column="31" selection-end-line="126" selection-end-column="31" />
         </state>
       </provider>
     </entry>

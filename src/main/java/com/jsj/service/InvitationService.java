@@ -1,7 +1,8 @@
 package com.jsj.service;
 
+import com.github.pagehelper.PageInfo;
 import com.jsj.bean.Invitation;
-import com.jsj.bean.InvitationComment;
+import com.jsj.bean.InvitationUser;
 import com.jsj.bean.InvitationUserCommunity;
 
 import java.util.List;
@@ -11,7 +12,9 @@ public interface InvitationService {
 
     List<InvitationUserCommunity> getTopInvitation();
 
-    InvitationComment getInvitationComment(int invitationId);
+    InvitationUser getInvitationUserById(int id);
 
-    Map<String, Object> publish(Invitation invitation);
+    PageInfo<InvitationUser> getInvitationPage(int communityId,int pageIndex,int pageSize);
+
+    Map<String, Object> publishInvitation(Invitation invitation);
 }

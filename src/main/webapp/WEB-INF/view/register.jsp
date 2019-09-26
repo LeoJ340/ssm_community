@@ -73,7 +73,6 @@
                 email:email,
                 telNumber:telNumber
             };
-            alert(user);
             $.ajax({
                 url:"/register.do",
                 type:"POST",
@@ -89,7 +88,6 @@
                 }
             })
         }
-
     }
 </script>
 </body>

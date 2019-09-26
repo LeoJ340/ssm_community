@@ -1,10 +1,11 @@
 package com.jsj.service.Impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.jsj.bean.Invitation;
-import com.jsj.bean.InvitationComment;
+import com.jsj.bean.InvitationUser;
 import com.jsj.bean.InvitationUserCommunity;
 import com.jsj.mapper.InvitationMapper;
-import com.jsj.service.CommentService;
 import com.jsj.service.InvitationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,32 +23,26 @@ public class InvitationServiceImpl implements InvitationService {
     @Autowired
     private InvitationMapper invitationMapper;
 
-    @Autowired
-    private CommentService commentService;
-
     @Override
     public List<InvitationUserCommunity> getTopInvitation() {
         return  invitationMapper.getTopInvitation();
     }
 
     @Override
-    public InvitationComment getInvitationComment(int invitationId) {
-        InvitationComment invitationComment = new InvitationComment();
-        InvitationUserCommunity invitationUserCommunity = invitationMapper.getInvitationUserCommunityById(invitationId);
-        invitationComment.setId(invitationUserCommunity.getId());
-        invitationComment.setTitle(invitationUserCommunity.getTitle());
-        invitationComment.setContent(invitationUserCommunity.getContent());
-        invitationComment.setUserId(invitationUserCommunity.getUserId());
-        invitationComment.setTime(invitationUserCommunity.getTime());
-        invitationComment.setCommunityId(invitationUserCommunity.getCommunityId());
-        invitationComment.setCommunity(invitationUserCommunity.getCommunity());
-        invitationComment.setUsername(invitationUserCommunity.getUsername());
-        invitationComment.setCommentUsers(commentService.getCommentUser(invitationId));
-        return invitationComment;
+    public InvitationUser getInvitationUserById(int id) {
+        return invitationMapper.getInvitationUserById(id);
     }
 
     @Override
-    public Map<String, Object> publish(Invitation invitation) {
+    public PageInfo<InvitationUser> getInvitationPage(int communityId, int pageIndex, int pageSize) {
+        PageHelper.startPage(pageIndex, pageSize);
+        List<InvitationUser> invitationUsers = invitationMapper.getInvitationUsersByCommunityId(communityId);
+        return new PageInfo <>(invitationUsers);
+    }
+
+
+    @Override
+    public Map<String, Object> publishInvitation(Invitation invitation) {
         invitation.setTime(new Date());
         Map<String, Object> map = new HashMap<>();
         if (invitationMapper.insert(invitation)>0){

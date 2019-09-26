@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
 <body>
 <header class="bg-dark">
     <div class="container d-flex">
-        <a href="${pageContext.request.contextPath}/index">首页</a>
+        <a href="${pageContext.request.contextPath}/">首页</a>
         <div class="flex-grow-1 d-flex justify-content-end">
             <form class="d-flex flex-wrap align-content-center m-0" action="${pageContext.request.contextPath}/search">
                 <input type="text" placeholder="搜索你想要找的社区" name="name">

@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>${communityInvitations.name}社区</title>
+    <title>${community.name}社区</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/style.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/header.css">
@@ -13,28 +13,80 @@
 <main class="container mt-3">
     <div class="bg-light pl-3 pr-3 pt-3 mt-2">
         <div class="border bg-transparent p-3">
-            <h5>${communityInvitations.name}社区</h5>
+            <h5>${community.name}社区</h5>
             <p>
                 <c:choose>
-                    <c:when test="${empty communityInvitations.introduction}">暂无简介</c:when>
-                    <c:otherwise>${communityInvitations.introduction}</c:otherwise>
+                    <c:when test="${empty community.introduction}">暂无简介</c:when>
+                    <c:otherwise>${community.introduction}</c:otherwise>
                 </c:choose>
             </p>
         </div>
-        <ul class="mt-3">
-            <c:forEach items="${communityInvitations.invitationUsers}" var="invitationUser">
+        <ul class="mt-3 pl-0">
+            <c:forEach items="${invitationPage.list}" var="invitationUser">
                 <li class="d-flex flex-column border-bottom">
-                    <div class="row">
+                    <div class="row pl-3">
                         <a class="text-primary" href="/invitation/${invitationUser.id}">${invitationUser.title}</a>
                         <span class="flex-grow-1 d-flex justify-content-end pr-3 time">${invitationUser.username}</span>
                     </div>
-                    <div class="row">
+                    <div class="row pl-3">
                         <span class="content">${invitationUser.content}</span>
                         <span class="flex-grow-1 d-flex justify-content-end pr-3 time">${invitationUser.time}</span>
                     </div>
                 </li>
             </c:forEach>
         </ul>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <c:choose>
+                    <c:when test="${invitationPage.prePage < 1}">
+                        <li class="page-item disabled" data-toggle="tooltip" data-placement="left" title="没有上一页">
+                            <a class="page-link" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item">
+                            <a class="page-link" href="/community/${community.id}?pageIndex=${invitationPage.prePage}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+
+                <c:forEach var="index" begin="1" end="${invitationPage.pages}">
+                    <c:choose>
+                        <c:when test="${index eq invitationPage.pageNum}">
+                            <li class="page-item active"><a class="page-link" href="/community/${community.id}?pageIndex=${index}">${index}</a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="page-item"><a class="page-link" href="/community/${community.id}?pageIndex=${index}">${index}</a></li>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+
+                <c:choose>
+                    <c:when test="${invitationPage.pageNum >= invitationPage.nextPage}">
+                        <li class="page-item disabled" data-toggle="tooltip" data-placement="right" title="没有下一页">
+                            <a class="page-link" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item">
+                            <a class="page-link" href="/community/${community.id}?pageIndex=${invitationPage.nextPage}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+            </ul>
+        </nav>
         <h5>发表新帖</h5>
         <form method="post" action="${pageContext.request.contextPath}/publishInvitation">
             <input type="text" maxlength="50" placeholder="请输入标题" class="w-100 pl-3 mt-3 mb-3 title" id="title" />
@@ -67,7 +119,7 @@
     }
     function publishInvitation() {
         let invitation = {
-            communityId : ${communityInvitations.id},
+            communityId : ${community.id},
             <c:if test="${sessionScope.userId!=null}">userId:${sessionScope.userId},</c:if>
             title:$("#title").val(),
             content:$("#content").val()

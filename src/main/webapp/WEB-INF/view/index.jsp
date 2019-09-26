@@ -12,10 +12,10 @@
 <%@include file="header.jsp"%>
 <main class="container mt-3">
     <div class="bg-light p-3">
-        <h5>推荐社区</h5>
+        <h5>热门社区</h5>
         <ul class="row">
             <c:forEach items="${topCommunity}" var="community" end="2">
-                <li class="flex-fill text-center">
+                <li class="text-center" style="width: 33%">
                     <h3><a href="/community/${community.id}">${community.name}社区</a></h3>
                     <p class="content">
                         <c:choose>
@@ -32,7 +32,7 @@
         </ul>
         <ul class="row">
             <c:forEach items="${topCommunity}" var="community" begin="3">
-                <li class="flex-fill text-center">
+                <li class="text-center" style="width: 33%">
                     <h3><a href="/community/${community.id}">${community.name}社区</a></h3>
                     <p class="content">
                         <c:choose>
@@ -54,9 +54,8 @@
             <c:forEach items="${topInvitation}" var="invitation">
                 <li class="d-flex flex-column border-bottom">
                     <span><a href="/community/${invitation.communityId}" class="bg-dark text-white">${invitation.community.name}社区</a></span>
-                    <span><a href="/invitation/${invitation.id}">${invitation.title}</a></span>
                     <div class="row pr-3 pl-3">
-                        <span class="content">${invitation.content}</span>
+                        <span><a href="/invitation/${invitation.id}">${invitation.title}</a></span>
                         <span class="flex-grow-1 d-flex justify-content-end time">${invitation.time}</span>
                     </div>
                 </li>

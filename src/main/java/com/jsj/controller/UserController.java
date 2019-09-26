@@ -72,7 +72,7 @@ public class UserController {
         return JSON.toJSONString(userService.register(user));
     }
 
-    @RequestMapping("logout")
+    @RequestMapping(method = RequestMethod.GET, value ="logout")
     public String logout(HttpServletRequest request) {
         request.getSession().removeAttribute("userStatus");
         request.getSession().removeAttribute("username");

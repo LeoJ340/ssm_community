@@ -1,14 +1,16 @@
 package com.jsj.service;
 
+import com.github.pagehelper.PageInfo;
 import com.jsj.bean.Comment;
 import com.jsj.bean.CommentUser;
 
-import java.util.List;
 import java.util.Map;
 
 public interface CommentService {
 
-    List<CommentUser> getCommentUser(int InvitationId);
+    PageInfo<CommentUser> getCommentUserByCinId(int cinId, int pageIndex, int pageSize);
+
+    PageInfo<CommentUser> getCommentUser(int InvitationId, int pageIndex, int pageSize);
 
     Map<String, Object> publishComment(Comment comment);
 }

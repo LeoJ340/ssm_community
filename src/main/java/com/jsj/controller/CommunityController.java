@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CommunityController {
@@ -18,7 +19,7 @@ public class CommunityController {
     @Autowired
     private InvitationService invitationService;
 
-    @RequestMapping(method = RequestMethod.GET,value ="index")
+    @RequestMapping(method = RequestMethod.GET,value ="/")
     public String index(Model model){
         model.addAttribute("topCommunity", communityService.getTopCommunity());
         model.addAttribute("topInvitation", invitationService.getTopInvitation());
@@ -26,13 +27,16 @@ public class CommunityController {
     }
 
     @RequestMapping(method = RequestMethod.GET,value = "community/{id}")
-    public String toCommunity(Model model,@PathVariable("id")Integer communityId){
-        model.addAttribute("communityInvitations", communityService.getCommunityInvitations(communityId));
+    public String toCommunity(Model model,@PathVariable("id")Integer communityId,
+                              @RequestParam(required = false,defaultValue = "1") int pageIndex,
+                              @RequestParam(required = false,defaultValue = "10") int pageSize){
+        model.addAttribute("invitationPage",invitationService.getInvitationPage(communityId,pageIndex, pageSize));
+        model.addAttribute("community", communityService.getCommunityById(communityId));
         return "community";
     }
 
     @RequestMapping(method = RequestMethod.GET,value = "search")
-    public String string(Model model,String name){
+    public String searchCommunity(Model model,String name){
         model.addAttribute("communites", communityService.getCommunites(name));
         return "search";
     }

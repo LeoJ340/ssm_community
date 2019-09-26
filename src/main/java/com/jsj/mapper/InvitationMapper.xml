@@ -21,6 +21,15 @@
         </association>
     </resultMap>
 
+    <resultMap id="InvitationUserResultMap" type="InvitationUser">
+        <id column="id" property="id"/>
+        <result column="community_id" property="communityId"/>
+        <result column="user_id" property="userId"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="time" property="time"/>
+    </resultMap>
+
     <select id="getTopInvitation" resultMap="InvitationUserCommunityResultMap">
         SELECT
             invitation.*,
@@ -37,22 +46,18 @@
         LIMIT 0,10
     </select>
 
-    <!-- 一个帖子 -->
-    <select id="getInvitationUserCommunityById" parameterType="int" resultMap="InvitationUserCommunityResultMap">
+    <select id="getInvitationUserById" parameterType="int" resultMap="InvitationUserResultMap">
         SELECT
             invitation.*,
-            community.*,
             user.`username`
         FROM
-            invitation,
-            community,
-            user
-            WHERE invitation.`community_id` = community.`id`
-                AND user.`id` = invitation.`user_id`
+            invitation
+            INNER JOIN user
+                ON user.`id` = invitation.`user_id`
                 AND invitation.`id` = #{invitationId}
     </select>
 
-    <select id="getInvitationUsersByCommunityId" parameterType="int" resultType="InvitationUser">
+    <select id="getInvitationUsersByCommunityId" parameterType="int" resultMap="InvitationUserResultMap">
         SELECT
             invitation.*,
             user.`username`
