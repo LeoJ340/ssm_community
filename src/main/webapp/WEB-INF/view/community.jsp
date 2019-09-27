@@ -106,14 +106,18 @@
     // 创建富文本编辑器
     let E = window.wangEditor;
     let editor = new E('#contentEidtor');
-    let $text1 = $('#content');
+    let content = $('#content');
     editor.customConfig.onchange = function(html) {
-        $text1.val(html)
+        content.val(html);
     };
     editor.create();
-    $text1.val(editor.txt.html());
+    content.val(editor.txt.html());
+
+    // 全局变量---用户状态
+    let userStatus = ${empty sessionScope.userStatus};
+
     // 用户未登录，禁用发贴功能
-    if (${empty sessionScope.userStatus}){
+    if (userStatus){
         editor.txt.html("你还没有登录");
         editor.$textElem.css("text-align","center");
         editor.$textElem.attr('contenteditable', false);
@@ -121,6 +125,9 @@
         $("#publishButton").attr("disabled",true);
     }
     function publishInvitation() {
+        if (userStatus){
+            return;
+        }
         let invitation = {
             communityId : ${community.id},
             <c:if test="${sessionScope.userId!=null}">userId:${sessionScope.userId},</c:if>

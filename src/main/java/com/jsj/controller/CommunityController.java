@@ -1,5 +1,6 @@
 package com.jsj.controller;
 
+import com.jsj.bean.Community;
 import com.jsj.service.CommunityService;
 import com.jsj.service.InvitationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +31,14 @@ public class CommunityController {
     public String toCommunity(Model model,@PathVariable("id")Integer communityId,
                               @RequestParam(required = false,defaultValue = "1") int pageIndex,
                               @RequestParam(required = false,defaultValue = "10") int pageSize){
-        model.addAttribute("invitationPage",invitationService.getInvitationPage(communityId,pageIndex, pageSize));
-        model.addAttribute("community", communityService.getCommunityById(communityId));
-        return "community";
+        Community community = communityService.getCommunityById(communityId);
+        if (community == null){
+            return "error/404";
+        }else {
+            model.addAttribute("invitationPage",invitationService.getInvitationPage(communityId,pageIndex, pageSize));
+            model.addAttribute("community", community);
+            return "community";
+        }
     }
 
     /**

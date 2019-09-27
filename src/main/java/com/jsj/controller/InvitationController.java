@@ -28,10 +28,14 @@ public class InvitationController {
                                @RequestParam(required = false,defaultValue = "1") Integer pageIndex,
                                @RequestParam(required = false,defaultValue = "10") Integer pageSize){
         InvitationUser invitationUser = invitationService.getInvitationUserById(invitationId);
-        model.addAttribute("community",communityService.getCommunityById(invitationUser.getCommunityId()));
-        model.addAttribute("invitation",invitationUser);
-        model.addAttribute("comments", commentService.getCommentUser(invitationId,pageIndex,pageSize));
-        return "invitation";
+        if (invitationUser == null){
+            return "error";
+        }else {
+            model.addAttribute("community",communityService.getCommunityById(invitationUser.getCommunityId()));
+            model.addAttribute("invitation",invitationUser);
+            model.addAttribute("comments", commentService.getCommentUser(invitationId,pageIndex,pageSize));
+            return "invitation";
+        }
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "publishInvitation")

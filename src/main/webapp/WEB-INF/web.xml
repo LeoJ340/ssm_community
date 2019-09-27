@@ -4,6 +4,16 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+  <error-page>
+    <error-code>405</error-code>
+    <location>/WEB-INF/view/error/405.jsp</location>
+  </error-page>
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/view/error/404.jsp</location>
+  </error-page>
+
   <!-- spring的字符编码过滤器 -->
   <filter>
     <filter-name>CharacterEncoding</filter-name>

@@ -129,12 +129,11 @@
     // 创建富文本编辑器
     let E = window.wangEditor;
     let editor = new E('#contentEidtor');
-    let $text1 = $('#content');
     editor.customConfig.onchange = function(html) {
-        $text1.val(html)
+        $('#content').val(html)
     };
     editor.create();
-    $text1.val(editor.txt.html());
+    $('#content').val(editor.txt.html());
 
     // 全局变量---用户状态
     let userStatus = ${empty sessionScope.userStatus};
@@ -147,8 +146,8 @@
         disabledButton();
     }
 
+    // 批量禁用所有按钮
     function disabledButton() {
-        // 批量禁用所有按钮
         let publishButtons = document.getElementsByName("publishButton");
         for(let i = 0;i<publishButtons.length;i++){
             publishButtons[i].setAttribute("disabled","disabled");
@@ -157,7 +156,7 @@
 
     // 局部渲染评论
     function showComment(commentId,pageIndex,pageSize) {
-        $.get("/getComments",
+        $.post("/getComments",
             {
                 cinId:commentId,
                 pageIndex:pageIndex,
@@ -172,6 +171,9 @@
 
     // 发表第一层评论
     function publishFirstComment() {
+        if (userStatus){
+            return;
+        }
         let firstComment = {
             invitationId:${invitation.id},
             <c:if test="${sessionScope.userId!=null}">userId:${sessionScope.userId},</c:if>
@@ -195,6 +197,9 @@
 
     // 层中选择评论对象
     function toCommentFor(cinId,cforId,cforUsername) {
+        if (userStatus){
+            return;
+        }
         let cfor = $("#comment"+cinId).find("form").find("span");
         cfor.text("回复:"+cforUsername);
         cfor.attr("id",cforId);
@@ -202,19 +207,22 @@
 
     // 发表评论
     function publishComment(cinId) {
-        let cforId = $("#comment"+cinId).find("form").find("span").attr("id");
+        if (userStatus){
+            return;
+        }
+        let commentView = $("#comment"+cinId);
+        let cforId = commentView.find("form").find("span").attr("id");
         let comment = {
             invitationId: ${invitation.id},
             cinId:cinId,
             <c:if test="${sessionScope.userId!=null}">userId:${sessionScope.userId},</c:if>
-            content: $("#comment"+cinId).find("form").find("textarea").val()
+            content: commentView.find("form").find("textarea").val()
         };
         if (cforId!==undefined){
             comment.cforId = cforId;
         }else {
             comment.cforId = cinId;
         }
-        console.log(comment);
         $.ajax({
             url:"/publishComment",
             data:comment,
