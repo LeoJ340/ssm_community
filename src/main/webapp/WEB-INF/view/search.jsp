@@ -16,7 +16,7 @@
         <ul>
             <c:forEach items="${communites}" var="community">
                 <li class="d-flex flex-column border-bottom">
-                    <span><a href="/community/${community.id}" class="bg-dark text-white">${community.name}社区</a></span>
+                    <span><a href="${pageContext.request.contextPath}/community/${community.id}" class="bg-dark text-white">${community.name}社区</a></span>
                     <span class="content">
                         <c:choose>
                             <c:when test="${empty community.introduction}">暂无简介</c:when>
