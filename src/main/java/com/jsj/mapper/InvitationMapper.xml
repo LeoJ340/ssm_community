@@ -30,6 +30,7 @@
         <result column="time" property="time"/>
     </resultMap>
 
+    <!--  查询一周内评论数最多的帖子  -->
     <select id="getTopInvitation" resultMap="InvitationUserCommunityResultMap">
         SELECT
             invitation.*,
@@ -41,9 +42,10 @@
         community
         WHERE invitation.`id` = comment.`invitation_id`
         AND invitation.`community_id` = community.`id`
+        AND date_sub(curdate(), interval 7 day) &lt;= date(comment.time)
         GROUP BY comment.`invitation_id`
         ORDER BY COUNT(comment.`invitation_id`) DESC
-        LIMIT 0,10
+        LIMIT 10
     </select>
 
     <select id="getInvitationUserById" parameterType="int" resultMap="InvitationUserResultMap">
