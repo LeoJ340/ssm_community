@@ -23,7 +23,7 @@ public class InvitationController {
     @Autowired
     private CommentService commentService;
 
-    @RequestMapping(method = RequestMethod.GET,value = "invitation/{id}")
+    @RequestMapping(method = RequestMethod.GET,value = "/invitation/{id}")
     public String toInvitation(Model model, @PathVariable("id")int invitationId,
                                @RequestParam(required = false,defaultValue = "1") Integer pageIndex,
                                @RequestParam(required = false,defaultValue = "10") Integer pageSize){
@@ -38,7 +38,7 @@ public class InvitationController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "publishInvitation")
+    @RequestMapping(method = RequestMethod.POST, value = "/publishInvitation")
     @ResponseBody
     public String string(Invitation invitation){
         return JSON.toJSONString(invitationService.publishInvitation(invitation));

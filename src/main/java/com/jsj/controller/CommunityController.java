@@ -27,7 +27,7 @@ public class CommunityController {
         return "index";
     }
 
-    @RequestMapping(method = RequestMethod.GET,value = "community/{id}")
+    @RequestMapping(method = RequestMethod.GET,value = "/community/{id}")
     public String toCommunity(Model model,@PathVariable("id")Integer communityId,
                               @RequestParam(required = false,defaultValue = "1") int pageIndex,
                               @RequestParam(required = false,defaultValue = "10") int pageSize){
@@ -44,7 +44,7 @@ public class CommunityController {
     /**
      * 搜索社区
      */
-    @RequestMapping(method = RequestMethod.GET,value = "search")
+    @RequestMapping(method = RequestMethod.GET,value = "/search")
     public String searchCommunity(Model model,String name){
         model.addAttribute("communites", communityService.getCommunites(name));
         return "search";

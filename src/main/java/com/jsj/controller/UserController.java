@@ -24,7 +24,7 @@ public class UserController {
     /**
      * 跳转到登录页面
      */
-    @RequestMapping(method = RequestMethod.GET,value = "login")
+    @RequestMapping(method = RequestMethod.GET,value = "/login")
     public String toLogin(HttpServletRequest request, Model model){
         Cookie [] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
@@ -41,12 +41,12 @@ public class UserController {
     /**
      * 跳转到用户注册页面
      */
-    @RequestMapping(method = RequestMethod.GET,value = "register")
+    @RequestMapping(method = RequestMethod.GET,value = "/register")
     public String toRegister(){
         return "register";
     }
 
-    @RequestMapping(method = RequestMethod.POST,value = "login.do")
+    @RequestMapping(method = RequestMethod.POST,value = "/login.do")
     @ResponseBody
     public String login(String username, String password, String remember,
                         HttpServletRequest request,HttpServletResponse response) {
@@ -66,7 +66,7 @@ public class UserController {
         return JSON.toJSONString(map);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "register.do")
+    @RequestMapping(method = RequestMethod.POST, value = "/register.do")
     @ResponseBody
     public String register(User user){
         return JSON.toJSONString(userService.register(user));
@@ -77,6 +77,6 @@ public class UserController {
         request.getSession().removeAttribute("userStatus");
         request.getSession().removeAttribute("username");
         request.getSession().removeAttribute("userId");
-        return "login";
+        return "redirect:/";
     }
 }

@@ -26,7 +26,7 @@
             <c:forEach items="${invitationPage.list}" var="invitationUser">
                 <li class="d-flex flex-column border-bottom">
                     <div class="row pl-3">
-                        <a class="text-primary" href="/invitation/${invitationUser.id}">${invitationUser.title}</a>
+                        <a class="text-primary" href="${pageContext.request.contextPath}/invitation/${invitationUser.id}">${invitationUser.title}</a>
                         <span class="flex-grow-1 d-flex justify-content-end pr-3 time">${invitationUser.username}</span>
                     </div>
                     <div class="row pl-3">
@@ -51,7 +51,7 @@
                     </c:when>
                     <c:otherwise>
                         <li class="page-item">
-                            <a class="page-link" href="/community/${community.id}?pageIndex=${invitationPage.prePage}" aria-label="Previous">
+                            <a class="page-link" href="${pageContext.request.contextPath}/community/${community.id}?pageIndex=${invitationPage.prePage}" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                                 <span class="sr-only">Previous</span>
                             </a>
@@ -62,10 +62,10 @@
                 <c:forEach var="index" begin="1" end="${invitationPage.pages}">
                     <c:choose>
                         <c:when test="${index eq invitationPage.pageNum}">
-                            <li class="page-item active"><a class="page-link" href="/community/${community.id}?pageIndex=${index}">${index}</a></li>
+                            <li class="page-item active"><a class="page-link" href="${pageContext.request.contextPath}/community/${community.id}?pageIndex=${index}">${index}</a></li>
                         </c:when>
                         <c:otherwise>
-                            <li class="page-item"><a class="page-link" href="/community/${community.id}?pageIndex=${index}">${index}</a></li>
+                            <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/community/${community.id}?pageIndex=${index}">${index}</a></li>
                         </c:otherwise>
                     </c:choose>
                 </c:forEach>
@@ -81,7 +81,7 @@
                     </c:when>
                     <c:otherwise>
                         <li class="page-item">
-                            <a class="page-link" href="/community/${community.id}?pageIndex=${invitationPage.nextPage}" aria-label="Next">
+                            <a class="page-link" href="${pageContext.request.contextPath}/community/${community.id}?pageIndex=${invitationPage.nextPage}" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                                 <span class="sr-only">Next</span>
                             </a>
@@ -135,7 +135,7 @@
             content:$("#content").val()
         };
         $.ajax({
-            url:"/publishInvitation",
+            url:"${pageContext.request.contextPath}/publishInvitation",
             type:"POST",
             data:invitation,
             dataType:"json",

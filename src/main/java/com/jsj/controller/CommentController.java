@@ -20,7 +20,7 @@ public class CommentController {
     /**
      * 评论区
      */
-    @RequestMapping(method = RequestMethod.POST, value = "getComments")
+    @RequestMapping(method = RequestMethod.POST, value = "/getComments")
     public String getCommentUsers(Model model, int cinId,
                                   @RequestParam(required = false,defaultValue = "1") int pageIndex,
                                   @RequestParam(required = false,defaultValue = "5") int pageSize){
@@ -29,7 +29,7 @@ public class CommentController {
         return "comment";
     }
 
-    @RequestMapping(method = RequestMethod.POST,value = "publishComment")
+    @RequestMapping(method = RequestMethod.POST,value = "/publishComment")
     @ResponseBody
     public String publishFirstComment(Comment comment){
         return JSON.toJSONString(commentService.publishComment(comment));

@@ -156,7 +156,7 @@
 
     // 局部渲染评论
     function showComment(commentId,pageIndex,pageSize) {
-        $.post("/getComments",
+        $.post("${pageContext.request.contextPath}/getComments",
             {
                 cinId:commentId,
                 pageIndex:pageIndex,
@@ -180,7 +180,7 @@
             content:$("#content").val()
         };
         $.ajax({
-            url:"/publishComment",
+            url:"${pageContext.request.contextPath}/publishComment",
             data:firstComment,
             type:"POST",
             dataType:"json",
@@ -224,7 +224,7 @@
             comment.cforId = cinId;
         }
         $.ajax({
-            url:"/publishComment",
+            url:"${pageContext.request.contextPath}/publishComment",
             data:comment,
             type:"POST",
             dataType:"json",

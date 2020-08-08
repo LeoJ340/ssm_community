@@ -74,14 +74,14 @@
                 telNumber:telNumber
             };
             $.ajax({
-                url:"/register.do",
+                url:"${pageContext.request.contextPath}/register.do",
                 type:"POST",
                 data:user,
                 dataType:"json",
                 success:function (response) {
                     if (response.success){
                         alert(response.message);
-                        window.location.href="/";
+                        window.location.href="${pageContext.request.contextPath}/";
                     }else {
                         alert(response.message);
                     }

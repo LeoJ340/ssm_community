@@ -35,14 +35,14 @@
             alert("请输入用户名及密码");
         }else {
             $.ajax({
-                url:"/login.do",
+                url:"${pageContext.request.contextPath}/login.do",
                 type:"POST",
                 data:$("#loginForm").serialize(),
                 dataType:"json",
                 success:function (response) {
                     if (response.success){
                         alert(response.message);
-                        window.location.href="/";
+                        window.location.href="${pageContext.request.contextPath}/";
                     }else {
                         alert(response.message);
                     }
