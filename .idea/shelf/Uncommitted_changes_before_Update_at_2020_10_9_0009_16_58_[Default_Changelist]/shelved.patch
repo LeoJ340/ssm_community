@@ -1,0 +1,81 @@
+Index: src/main/webapp/WEB-INF/view/search.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page contentType=\"text/html;charset=UTF-8\" %>\r\n<%@taglib prefix=\"c\" uri=\"http://java.sun.com/jsp/jstl/core\" %>\r\n<html>\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>社区首页</title>\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css\">\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"${pageContext.request.contextPath}/static/css/style.css\">\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"${pageContext.request.contextPath}/static/css/header.css\">\r\n</head>\r\n<body>\r\n<%@include file=\"header.jsp\"%>\r\n<main class=\"container mt-3\">\r\n    <div class=\"bg-light pl-3 pr-3 pt-3 mt-2\">\r\n        <h5>搜索结果：共${communites.size()}条</h5>\r\n        <ul>\r\n            <c:forEach items=\"${communites}\" var=\"community\">\r\n                <li class=\"d-flex flex-column border-bottom\">\r\n                    <span><a href=\"${pageContext.request.contextPath}/community/${community.id}\" class=\"bg-dark text-white\">${community.name}社区</a></span>\r\n                    <span class=\"content\">\r\n                        <c:choose>\r\n                            <c:when test=\"${empty community.introduction}\">暂无简介</c:when>\r\n                            <c:otherwise>${community.introduction}</c:otherwise>\r\n                        </c:choose>\r\n                    </span>\r\n                </li>\r\n            </c:forEach>\r\n        </ul>\r\n    </div>\r\n</main>\r\n<script src=\"${pageContext.request.contextPath}/static/js/jquery.min.js\"></script>\r\n<script src=\"${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js\"></script>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/webapp/WEB-INF/view/search.jsp	(revision 2b5c94c636fd462903d5639d2e8278cfd01224fc)
++++ src/main/webapp/WEB-INF/view/search.jsp	(date 1602233785793)
+@@ -3,32 +3,39 @@
+ <html>
+ <head>
+     <meta charset="UTF-8">
++    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <title>社区首页</title>
+     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css">
+     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/style.css">
+     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/header.css">
+ </head>
+-<body>
++<body class="bg-light">
+ <%@include file="header.jsp"%>
+-<main class="container mt-3">
+-    <div class="bg-light pl-3 pr-3 pt-3 mt-2">
++<main class="container">
++    <div class="my-3 p-3 bg-white rounded shadow-sm">
+         <h5>搜索结果：共${communites.size()}条</h5>
+-        <ul>
+-            <c:forEach items="${communites}" var="community">
+-                <li class="d-flex flex-column border-bottom">
+-                    <span><a href="${pageContext.request.contextPath}/community/${community.id}" class="bg-dark text-white">${community.name}社区</a></span>
+-                    <span class="content">
+-                        <c:choose>
+-                            <c:when test="${empty community.introduction}">暂无简介</c:when>
+-                            <c:otherwise>${community.introduction}</c:otherwise>
+-                        </c:choose>
+-                    </span>
+-                </li>
+-            </c:forEach>
+-        </ul>
++        <c:forEach items="${communites}" var="community">
++            <div class="media text-muted pt-3">
++                <img src="${community.logo}" alt="logo" width="48" height="48">
++                <p class="media-body pb-3 mb-0 ml-3 lh-125 border-bottom border-gray">
++                    <strong class="d-block text-gray-dark">
++                        <a href="${pageContext.request.contextPath}/community/${community.id}">${community.name}社区</a>
++                    </strong>
++                    <c:choose>
++                        <c:when test="${empty community.introduction}">
++                            暂无简介
++                        </c:when>
++                        <c:otherwise>
++                            ${community.introduction}
++                        </c:otherwise>
++                    </c:choose>
++                </p>
++            </div>
++        </c:forEach>
+     </div>
+ </main>
+ <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
+ <script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
++<script src="${pageContext.request.contextPath}/static/js/header.js"></script>
+ </body>
+ </html>
+Index: src/main/webapp/mybatis-config.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/webapp/mybatis-config.xml	(date 1602224822663)
++++ src/main/webapp/mybatis-config.xml	(date 1602224822663)
+@@ -0,0 +1,7 @@
++<?xml version='1.0' encoding='UTF-8'?>
++
++<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
++              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
++              version="2.0">
++</faces-config>
+\ No newline at end of file

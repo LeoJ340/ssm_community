@@ -14,6 +14,11 @@
     <location>/WEB-INF/view/error/404.jsp</location>
   </error-page>
 
+  <error-page>
+    <error-code>500</error-code>
+    <location>/WEB-INF/view/error/500.jsp</location>
+  </error-page>
+
   <!-- spring的字符编码过滤器 -->
   <filter>
     <filter-name>CharacterEncoding</filter-name>
