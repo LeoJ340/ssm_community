@@ -7,6 +7,16 @@
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
   </component>
+  <component name="MavenCompilerTasksManager">
+    <option name="afterRebuildTask">
+      <set>
+        <MavenCompilerTask>
+          <option name="goal" value="org.apache.maven.plugins:maven-war-plugin:2.2:war" />
+          <option name="projectPath" value="$PROJECT_DIR$/pom.xml" />
+        </MavenCompilerTask>
+      </set>
+    </option>
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>

@@ -1,5 +1,5 @@
-body{
-    background-color: #eaeaea;
+.bg-gray-dark{
+    background: #848eb5;
 }
 ul,li{
     list-style: none;
@@ -16,4 +16,11 @@ a:hover{
 }
 .time{
     font-size: 12px;
+}
+#contentEidtor .w-e-toolbar{
+    overflow: auto;
+}
+.userInfo{
+    width: 100px;
+    overflow: initial;
 }

@@ -21,15 +21,6 @@
         </association>
     </resultMap>
 
-    <resultMap id="InvitationUserResultMap" type="InvitationUser">
-        <id column="id" property="id"/>
-        <result column="community_id" property="communityId"/>
-        <result column="user_id" property="userId"/>
-        <result column="title" property="title"/>
-        <result column="content" property="content"/>
-        <result column="time" property="time"/>
-    </resultMap>
-
     <!--  查询一周内评论数最多的帖子  -->
     <select id="getTopInvitation" resultMap="InvitationUserCommunityResultMap">
         SELECT
@@ -42,13 +33,13 @@
         community
         WHERE invitation.`id` = comment.`invitation_id`
         AND invitation.`community_id` = community.`id`
-        AND date_sub(curdate(), interval 7 day) &lt;= date(comment.time)
+--         AND date_sub(curdate(), interval 7 day) &lt;= date(comment.time)
         GROUP BY comment.`invitation_id`
         ORDER BY COUNT(comment.`invitation_id`) DESC
         LIMIT 10
     </select>
 
-    <select id="getInvitationUserById" parameterType="int" resultMap="InvitationUserResultMap">
+    <select id="getInvitationUserById" parameterType="int" resultType="InvitationUser">
         SELECT
             invitation.*,
             user.`username`
@@ -59,7 +50,7 @@
                 AND invitation.`id` = #{invitationId}
     </select>
 
-    <select id="getInvitationUsersByCommunityId" parameterType="int" resultMap="InvitationUserResultMap">
+    <select id="getInvitationUsersByCommunityId" parameterType="int" resultType="InvitationUser">
         SELECT
             invitation.*,
             user.`username`

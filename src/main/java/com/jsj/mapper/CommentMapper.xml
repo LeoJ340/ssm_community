@@ -15,6 +15,7 @@
         <result column="content" property="content"/>
         <!--关联信息-->
         <result column="username" property="username"/>
+        <result column="cforUsername" property="cforUsername"/>
     </resultMap>
 
     <!--第一层评论-->
@@ -33,13 +34,14 @@
     <!--下级评论-->
     <select id="getCommentByCinId" parameterType="int" resultMap="CommentResultMap">
         SELECT
-            comment.*,
-            user.`username`
+            c1.*,
+	        cu.username AS username,
+	        fu.username AS cforUsername
         FROM
-            COMMENT
-            INNER JOIN USER
-                ON comment.`user_id` = user.`id`
-                AND comment.`cin_id` = #{cin_id}
+	        COMMENT c1
+	        INNER JOIN `user` cu ON cu.id = c1.user_id
+	        INNER JOIN `user` fu ON fu.id = (SELECT c2.user_id FROM `comment` c2 WHERE c2.id = c1.cfor_id)
+	        AND c1.`cin_id` = #{cin_id}
     </select>
 
     <insert id="insert" parameterType="Comment">

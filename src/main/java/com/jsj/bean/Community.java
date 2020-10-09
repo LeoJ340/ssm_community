@@ -8,6 +8,8 @@ public class Community {
 
     private String introduction;
 
+    private String logo;
+
     public Integer getId() {
         return id;
     }
@@ -32,4 +34,11 @@ public class Community {
         this.introduction = introduction;
     }
 
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
 }

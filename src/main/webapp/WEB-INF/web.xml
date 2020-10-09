@@ -38,8 +38,12 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:spring.xml</param-value>
   </context-param>
+    <context-param>
+        <param-name/>
+        <param-value/>
+    </context-param>
 
-  <!--springMvc前端控制器 -->
+    <!--springMvc前端控制器 -->
   <servlet>
     <servlet-name>springMvc</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

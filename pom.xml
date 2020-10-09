@@ -110,7 +110,7 @@
   </dependencies>
 
   <build>
-    <finalName>ssm_news</finalName>
+    <finalName>community</finalName>
       <plugins>
           <plugin>
               <groupId>org.apache.maven.plugins</groupId>

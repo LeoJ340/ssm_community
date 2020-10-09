@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>用户注册</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>注册</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/style.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/login.css">
@@ -10,12 +11,12 @@
 <body>
 <form class="form-signin" id="registerForm">
     <div class="text-center mb-4">
-        <h1 class="h3 mb-3 font-weight-normal">用户注册</h1>
+        <h1 class="h3 mb-3 font-weight-normal">注册</h1>
     </div>
 
     <div class="form-label-group">
         <span class="text-danger">*</span>
-        <label for="username">用户名：</label>
+        <label for="username">用户名/昵称：</label>
         <input type="text" id="username" class="form-control" placeholder="请输入用户名" maxlength="10">
     </div>
 
@@ -50,6 +51,7 @@
     </div>
 
     <button class="btn btn-lg btn-primary btn-block" type="button" onclick="register()">注册</button>
+    <a class="btn btn-lg btn-primary btn-block" type="button" href="${pageContext.request.contextPath}/login">已有账号，去登录</a>
 </form>
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>

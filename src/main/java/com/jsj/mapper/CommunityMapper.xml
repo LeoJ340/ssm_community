@@ -13,10 +13,10 @@
             community
             INNER JOIN invitation
             ON community.`id` = invitation.`community_id`
-            AND date_sub(curdate(), interval 7 day) &lt;= date(invitation.time)
+--             AND date_sub(curdate(), interval 7 day) &lt;= date(invitation.time)
         GROUP BY invitation.`community_id`
         ORDER BY COUNT(invitation.`community_id`) DESC
-        LIMIT 6
+        LIMIT 3
     </select>
 
     <select id="getById" parameterType="int" resultType="Community">

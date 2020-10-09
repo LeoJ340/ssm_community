@@ -14,7 +14,9 @@
                 </span>
                 <div class="flex-grow-1 d-flex justify-content-end mr-3">
                     <span class="time"><fmt:formatDate value="${comment.time}" pattern="yyyy-MM-dd hh:mm"/></span>
-                    <a class="ml-1 time" onclick="toCommentFor(${cinId},${comment.id},'${comment.username}')" href="javascript:void(0)">回复</a>
+                    <c:if test="${sessionScope.userStatus}">
+                        <a class="ml-1 time" onclick="toCommentFor(${cinId},${comment.id},'${comment.username}')" href="javascript:void(0)">回复</a>
+                    </c:if>
                 </div>
             </li>
         </c:forEach>
@@ -73,9 +75,12 @@
             </ul>
         </nav>
     </c:if>
-    <form>
-        <span></span>
-        <textarea rows="1" maxlength="100" class="w-100 mt-1 mb-1"></textarea>
-        <input name="publishButton" type="button" value="回复" onclick="publishComment(${cinId})">
-    </form>
+    <c:if test="${sessionScope.userStatus}">
+        <form>
+            <span></span>
+            <textarea rows="1" maxlength="100" class="w-100 mt-1 mb-1"></textarea>
+            <input name="publishButton" type="button" value="回复" onclick="publishComment(${cinId})">
+        </form>
+    </c:if>
+
 </div>

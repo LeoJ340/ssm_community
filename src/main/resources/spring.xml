@@ -30,6 +30,8 @@
         <property name="dataSource" ref="dataSource"/>
         <!-- JavaBean类型别名 -->
         <property name="typeAliasesPackage" value="com.jsj.bean" />
+        <!--加载mybatis配置文件 开启驼峰映射-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <!-- 插件 -->
         <property name="plugins">
             <array>

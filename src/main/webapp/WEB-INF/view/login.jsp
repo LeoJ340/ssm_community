@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>用户登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>登录</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/style.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/login.css">
@@ -10,10 +11,10 @@
 <body>
 <form class="form-signin" id="loginForm">
     <div class="text-center mb-4">
-        <h1 class="h3 mb-3 font-weight-normal">用户登录</h1>
+        <h1 class="h3 mb-3 font-weight-normal">登录</h1>
     </div>
     <div class="form-label-group">
-        <label for="username">用户名：</label>
+        <label for="username">昵称：</label>
         <input type="text" id="username" class="form-control" placeholder="请输入用户名" name="username" value="${rememberUsername}">
     </div>
     <div class="form-label-group">
@@ -25,7 +26,8 @@
             <input type="checkbox" name="remember">记住我
         </label>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="button" onclick="login()">登录</button>
+    <button class="btn btn-lg btn-primary btn-block mb-3" type="button" onclick="login()">登录</button>
+    <a class="btn btn-lg btn-primary btn-block mb-3" type="button" href="${pageContext.request.contextPath}/register">还没有账号，去注册</a>
 </form>
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>

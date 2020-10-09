@@ -4,32 +4,38 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>${invitation.title}</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/style.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/header.css">
 </head>
-<body>
+<body class="bg-light">
 <%@include file="header.jsp"%>
-<main class="container mt-3">
-    <div class="bg-light pl-3 pr-3 pt-3 mt-2">
-        <div class="p-3 border bg-transparent">
-            <h5><a href="/community/${community.id}">${community.name}社区</a></h5>
-            <p>
+<main class="container">
+    <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-dark rounded shadow-sm">
+        <a href="${pageContext.request.contextPath}/community/${community.id}">
+            <img class="mr-3" src="${community.logo}" alt="logo" width="48" height="48">
+        </a>
+        <div class="lh-100">
+            <h6 class="mb-0 text-white lh-100">${community.name}社区</h6>
+            <small>
                 <c:choose>
                     <c:when test="${empty community.introduction}">暂无简介</c:when>
                     <c:otherwise>${community.introduction}</c:otherwise>
                 </c:choose>
-            </p>
+            </small>
         </div>
-        <h5 class="mt-3 mb-0 p-3 border">${invitation.title}</h5>
-        <ul class="border p-0">
-            <li class="row p-3 border-bottom d-flex flex-nowrap">
+    </div>
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h5 class="mb-0 p-3">${invitation.title}</h5>
+        <ul class="p-0">
+            <li class="row border-info d-flex flex-nowrap">
                 <%--用户信息--%>
-                <div class="col-1 p-0 bg-info d-flex flex-column">
+                <div class="ml-3 mr-3 bg-gray-dark d-flex flex-column userInfo">
                     <span class="text-center">${invitation.username}</span>
                 </div>
-                <div class="flex-grow-1 ml-3 d-flex flex-column">
+                <div class="flex-grow-1 d-flex flex-column pt-3 pb-3 pr-3 border-bottom">
                     <p style="word-break: break-all;">${invitation.content}</p>
                     <span class="flex-grow-1 d-flex align-self-end justify-content-end mr-3 mt-5 time">
                         <fmt:formatDate value="${invitation.time}" pattern="yyyy-MM-dd hh:mm"/>
@@ -37,11 +43,11 @@
                 </div>
             </li>
             <c:forEach items="${comments.list}" var="commentUser">
-                <li class="row p-3 border-bottom d-flex flex-nowrap">
-                    <div class="col-1 p-0 bg-info d-flex flex-column">
+                <li class="row border-info d-flex flex-nowrap">
+                    <div class="ml-3 mr-3 bg-gray-dark d-flex flex-column userInfo">
                         <span class="text-center">${commentUser.username}</span>
                     </div>
-                    <div class="flex-grow-1 ml-3 d-flex flex-column">
+                    <div class="flex-grow-1 d-flex flex-column pt-3 pb-3 pr-3 border-bottom" >
                         <p style="word-break: break-all;">${commentUser.content}</p>
                         <span class="flex-grow-1 d-flex align-self-end justify-content-end mr-3 time">
                             <fmt:formatDate value="${commentUser.time}" pattern="yyyy-MM-dd hh:mm"/>
@@ -49,8 +55,8 @@
                         <div>
                             <button class="btn btn-primary d-flex justify-content-end" type="button"
                                     data-toggle="collapse" data-target="#comment${commentUser.id}" onclick="showComment(${commentUser.id})">回复</button>
-                            <div class="collapse" id="comment${commentUser.id}">
-                                <%--楼中评论区--%>
+                            <div class="collapse mt-3" id="comment${commentUser.id}">
+                                    <%--楼中评论区--%>
                             </div>
                         </div>
                     </div>
@@ -112,19 +118,18 @@
                 </ul>
             </nav>
         </c:if>
+        <h6>发表评论</h6>
+        <form method="post" action="${pageContext.request.contextPath}/publishInvitation">
+            <div id="contentEidtor"></div>
+            <textarea style="display: none" id="content"></textarea>
+            <button type="button" class="mt-3 btn btn-danger" name="publishButton" onclick="publishFirstComment()">发表</button>
+        </form>
     </div>
 </main>
-<div class="container mt-3">
-    <h5>发表评论</h5>
-    <form method="post" action="${pageContext.request.contextPath}/publishInvitation">
-        <div id="contentEidtor"></div>
-        <textarea style="display: none" id="content"></textarea>
-        <button type="button" class="mt-3 btn btn-danger" name="publishButton" onclick="publishFirstComment()">发表</button>
-    </form>
-</div>
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/wangEditor/wangEditor.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/header.js"></script>
 <script>
     // 创建富文本编辑器
     let E = window.wangEditor;
@@ -132,6 +137,8 @@
     editor.customConfig.onchange = function(html) {
         $('#content').val(html)
     };
+    editor.customConfig.zIndex = 0;
+    editor.customConfig.uploadImgShowBase64 = true;// 使用 base64 保存图片
     editor.create();
     $('#content').val(editor.txt.html());
 
