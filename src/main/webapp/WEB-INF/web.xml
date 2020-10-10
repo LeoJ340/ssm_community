@@ -4,6 +4,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+  <!-- 异常处理 -->
   <error-page>
     <error-code>405</error-code>
     <location>/WEB-INF/view/error/405.jsp</location>
@@ -43,12 +44,8 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:spring.xml</param-value>
   </context-param>
-    <context-param>
-        <param-name/>
-        <param-value/>
-    </context-param>
 
-    <!--springMvc前端控制器 -->
+  <!--springMvc前端控制器 -->
   <servlet>
     <servlet-name>springMvc</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -64,6 +61,7 @@
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 
+  <!-- 静态资源 -->
   <servlet-mapping>
     <servlet-name>default</servlet-name>
     <url-pattern>*.js</url-pattern>
