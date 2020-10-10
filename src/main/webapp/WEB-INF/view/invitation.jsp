@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/style.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/header.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/invitation.css">
 </head>
 <body class="bg-light">
 <%@include file="header.jsp"%>
@@ -30,25 +31,29 @@
     <div class="my-3 p-3 bg-white rounded shadow-sm">
         <h5 class="mb-0 p-3">${invitation.title}</h5>
         <ul class="p-0">
-            <li class="row border-info d-flex flex-nowrap">
+            <li class="row border-info d-flex">
                 <%--用户信息--%>
-                <div class="ml-3 mr-3 bg-gray-dark d-flex flex-column userInfo">
-                    <span class="text-center">${invitation.username}</span>
+                <div class="col-lg-2 col-sm-12 mr-3 bg-gray-dark d-flex userInfo">
+                    <small class="text-muted">楼主</small>
+                    <img class="avatar" src="${invitation.userAvatar}" alt="logo">
+                    <span class="username">${invitation.username}</span>
                 </div>
-                <div class="flex-grow-1 d-flex flex-column pt-3 pb-3 pr-3 border-bottom">
-                    <p style="word-break: break-all;">${invitation.content}</p>
+                <div class="col-lg-9 col-sm-12 flex-grow-1 d-flex flex-column pt-3 pb-3 pr-3 border-bottom">
+                    <p class="m-0" style="word-break: break-all;">${invitation.content}</p>
                     <span class="flex-grow-1 d-flex align-self-end justify-content-end mr-3 mt-5 time">
                         <fmt:formatDate value="${invitation.time}" pattern="yyyy-MM-dd hh:mm"/>
                     </span>
                 </div>
             </li>
-            <c:forEach items="${comments.list}" var="commentUser">
-                <li class="row border-info d-flex flex-nowrap">
-                    <div class="ml-3 mr-3 bg-gray-dark d-flex flex-column userInfo">
-                        <span class="text-center">${commentUser.username}</span>
+            <c:forEach items="${comments.list}" var="commentUser" varStatus="index">
+                <li class="row border-info d-flex">
+                    <div class="col-lg-2 col-sm-12 mr-3 bg-gray-dark d-flex userInfo">
+                        <small class="text-muted">${index.index+1}楼</small>
+                        <img class="avatar" src="${commentUser.userAvatar}" alt="logo">
+                        <span class="username">${commentUser.username}</span>
                     </div>
-                    <div class="flex-grow-1 d-flex flex-column pt-3 pb-3 pr-3 border-bottom" >
-                        <p style="word-break: break-all;">${commentUser.content}</p>
+                    <div class="col-lg-9 col-sm-12 flex-grow-1 d-flex flex-column pt-3 pb-3 pr-3 border-bottom" >
+                        <p class="m-0" style="word-break: break-all;">${commentUser.content}</p>
                         <span class="flex-grow-1 d-flex align-self-end justify-content-end mr-3 time">
                             <fmt:formatDate value="${commentUser.time}" pattern="yyyy-MM-dd hh:mm"/>
                         </span>

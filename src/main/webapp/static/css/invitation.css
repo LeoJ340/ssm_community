@@ -1,0 +1,39 @@
+.userInfo{
+    overflow: initial;
+}
+/*PC*/
+@media (min-width: 768px) {
+    .userInfo{
+        width: 100px;
+        flex-direction: column;
+        margin-left: 1rem;
+    }
+    .userInfo span,small{
+        text-align: center;
+    }
+    .userInfo img{
+        width: 84px;
+        height: 84px;
+        margin: 10px auto;
+    }
+    .userInfo .username{
+        margin-bottom: 50px;
+    }
+}
+/*Mobile*/
+@media (max-width: 768px) {
+    .userInfo{
+        background-color: white;
+        flex-direction: row;
+    }
+    .userInfo span,small{
+        text-align: left;
+        line-height: 36px;
+    }
+    .userInfo img{
+        width: 36px;
+        height: 36px;
+        margin: 0 5px;
+        border-radius: 35%;
+    }
+}

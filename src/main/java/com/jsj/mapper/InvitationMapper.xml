@@ -42,7 +42,8 @@
     <select id="getInvitationUserById" parameterType="int" resultType="InvitationUser">
         SELECT
             invitation.*,
-            user.`username`
+            user.`username`,
+            user.`avatar` AS userAvatar
         FROM
             invitation
             INNER JOIN user

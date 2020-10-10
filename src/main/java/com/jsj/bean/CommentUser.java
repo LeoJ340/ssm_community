@@ -7,6 +7,8 @@ public class CommentUser extends Comment {
 
     private String username;
 
+    private String userAvatar;
+
     private String cforUsername;
 
     public String getUsername() {
@@ -15,6 +17,14 @@ public class CommentUser extends Comment {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getUserAvatar() {
+        return userAvatar;
+    }
+
+    public void setUserAvatar(String userAvatar) {
+        this.userAvatar = userAvatar;
     }
 
     public String getCforUsername() {

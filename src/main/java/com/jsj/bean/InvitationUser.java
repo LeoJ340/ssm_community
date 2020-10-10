@@ -7,6 +7,8 @@ public class InvitationUser extends Invitation {
 
     private String username;
 
+    private String userAvatar;
+
     public String getUsername() {
         return username;
     }
@@ -15,4 +17,11 @@ public class InvitationUser extends Invitation {
         this.username = username;
     }
 
+    public String getUserAvatar() {
+        return userAvatar;
+    }
+
+    public void setUserAvatar(String userAvatar) {
+        this.userAvatar = userAvatar;
+    }
 }

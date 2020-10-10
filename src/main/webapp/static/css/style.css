@@ -10,17 +10,9 @@ a{
 a:hover{
     text-decoration: none;
 }
-.content{
-    color: #666;
-    font-size: 14px;
-}
 .time{
     font-size: 12px;
 }
 #contentEidtor .w-e-toolbar{
     overflow: auto;
-}
-.userInfo{
-    width: 100px;
-    overflow: initial;
 }

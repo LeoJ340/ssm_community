@@ -15,6 +15,7 @@
         <result column="content" property="content"/>
         <!--关联信息-->
         <result column="username" property="username"/>
+        <result column="avatar" property="userAvatar"/>
         <result column="cforUsername" property="cforUsername"/>
     </resultMap>
 
@@ -22,7 +23,8 @@
     <select id="getCommentsByInvitationId" parameterType="int" resultMap="CommentResultMap">
         SELECT
             comment.*,
-            user.`username`
+            user.`username`,
+            user.`avatar`
         FROM
             comment
         INNER JOIN user

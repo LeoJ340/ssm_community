@@ -29,7 +29,7 @@ public class InvitationController {
                                @RequestParam(required = false,defaultValue = "10") Integer pageSize){
         InvitationUser invitationUser = invitationService.getInvitationUserById(invitationId);
         if (invitationUser == null){
-            return "error";
+            return "error/404";
         }else {
             model.addAttribute("community",communityService.getCommunityById(invitationUser.getCommunityId()));
             model.addAttribute("invitation",invitationUser);
