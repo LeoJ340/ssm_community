@@ -45,4 +45,27 @@ public class UserServiceImpl implements UserService {
         }
         return map;
     }
+
+    @Override
+    public Map<String, Object> update(User user) {
+        Map<String,Object> map = new HashMap<>();
+        if (userMapper.update(user)>0){
+            map.put("success",true);
+            map.put("message","修改成功");
+        }else {
+            map.put("success",false);
+            map.put("message","修改失败");
+        }
+        return map;
+    }
+
+    @Override
+    public Map<String, Object> userindex(int userId) {
+        Map<String,Object> userMap = new HashMap<>();
+        User user = userMapper.getById(userId);
+
+        userMap.put("user",user);
+        return userMap;
+//        return userMapper.getById(userId);
+    }
 }

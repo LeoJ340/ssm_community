@@ -22,10 +22,40 @@
                 AND comment.`id` = #{commentId}
     </select>
 
+    <select id="communitiesByUserId" parameterType="int" resultType="Community">
+
+    </select>
+
     <insert id="insert" parameterType="User">
         INSERT INTO user(username,password,birthday,email,tel_number,avatar)
         VALUES(#{username},#{password},#{birthday},#{email},#{telNumber},#{avatar})
     </insert>
+
+    <update id="update" parameterType="User">
+        UPDATE user
+        <set>
+            <if test="username!=null and username!=''">
+                username = #{username},
+            </if>
+            <if test="password!=null and password!=''">
+                password = #{password},
+            </if>
+            <if test="birthday!=null and birthday!=''">
+                birthday = #{birthday},
+            </if>
+            <if test="email!=null and email!=''">
+                email = #{email},
+            </if>
+            <if test="telNumber!=null and telNumber!=''">
+                tel_number = #{telNumber},
+            </if>
+            <if test="avatar!=null and avatar!=''">
+                avatar = #{avatar},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
 
 </mapper>
 
