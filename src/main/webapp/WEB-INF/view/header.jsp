@@ -19,8 +19,9 @@
                                aria-expanded="false">${sessionScope.username}</a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userInfo">
                                 <a class="dropdown-item" href="${pageContext.request.contextPath}/user/${sessionScope.userId}">个人中心</a>
-                                <a class="dropdown-item" href="#">收到回复</a>
-                                <a class="dropdown-item" href="#">收到评论</a>
+                                <a class="dropdown-item" href="#">
+                                    收到回复
+                                </a>
                                 <a class="dropdown-item" href="${pageContext.request.contextPath}/logout">注销</a>
                             </div>
                         </li>

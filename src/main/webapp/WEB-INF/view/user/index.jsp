@@ -75,8 +75,42 @@
             </div>
         </div>
     </div>
-    <div class="p-3 bg-white rounded shadow-sm">
+    <div class="bg-white rounded shadow-sm main">
+        <ul class="nav nav-tabs d-flex" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#dynamic">动态</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#invitation">帖子</a>
+            </li>
+            <c:if test="${userMap.user.id==sessionScope.userId}">
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#notice">
+                        通知
+                        <span class="badge badge-pill bg-light align-text-bottom"></span>
+                    </a>
+                </li>
+            </c:if>
+        </ul>
+        <!-- tab-content -->
+        <div class="tab-content">
+            <div id="dynamic" class="container tab-pane active"><br>
+                <%-- 个人动态页面 --%>
+                <ul class="list-group">
+                    <li class="list-group-item">
 
+                    </li>
+                </ul>
+            </div>
+            <div id="invitation" class="container tab-pane active"><br>
+                <%-- 帖子 --%>
+            </div>
+            <c:if test="${userMap.user.id==sessionScope.userId}">
+                <div id="notice" class="container tab-pane fade"><br>
+                    <%-- 通知 --%>
+                </div>
+            </c:if>
+        </div>
     </div>
 </main>
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>

@@ -39,6 +39,21 @@
 	    LIMIT 4
     </select>
 
+    <!--  评论动态  -->
+    <select id="commentDynamic" parameterType="int" resultType="map">
+        SELECT
+	        community.`name` AS community,
+	        invitation.title AS invitation,
+	        `comment`.content,
+	        `comment`.time
+        FROM
+	        `comment`
+	        INNER JOIN invitation ON `comment`.invitation_id = invitation.id
+	        INNER JOIN community ON invitation.community_id = community.id
+        WHERE
+	        `comment`.user_id = #{userId}
+    </select>
+
     <insert id="insert" parameterType="User">
         INSERT INTO user(username,password,birthday,email,tel_number,avatar)
         VALUES(#{username},#{password},#{birthday},#{email},#{telNumber},#{avatar})

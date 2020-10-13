@@ -21,4 +21,8 @@
     .oftenBrowseCommunities h6{
         font-size: 14px;
     }
+    .main .nav-item{
+        text-align: center;
+        flex: 1 1 auto!important;
+    }
 }
