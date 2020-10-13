@@ -1,5 +1,6 @@
 package com.jsj.service.Impl;
 
+import com.jsj.bean.Community;
 import com.jsj.bean.User;
 import com.jsj.mapper.UserMapper;
 import com.jsj.service.UserService;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -63,9 +65,9 @@ public class UserServiceImpl implements UserService {
     public Map<String, Object> userindex(int userId) {
         Map<String,Object> userMap = new HashMap<>();
         User user = userMapper.getById(userId);
-
+        List<Community> communities = userMapper.communitiesByUserId(userId);
+        userMap.put("communities",communities);
         userMap.put("user",user);
         return userMap;
-//        return userMapper.getById(userId);
     }
 }

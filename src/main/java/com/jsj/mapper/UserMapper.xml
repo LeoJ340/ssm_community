@@ -23,7 +23,20 @@
     </select>
 
     <select id="communitiesByUserId" parameterType="int" resultType="Community">
-
+        SELECT
+	        log.community_id AS id,
+	        community.`name`
+        FROM
+	        `browse_log` AS log
+	        INNER JOIN community ON community.id = log.community_id
+        WHERE
+	        log.user_id = #{userId}
+	        AND log.type = 0
+        GROUP BY
+	        log.community_id
+        ORDER BY
+	        COUNT( log.user_id ) DESC
+	    LIMIT 4
     </select>
 
     <insert id="insert" parameterType="User">

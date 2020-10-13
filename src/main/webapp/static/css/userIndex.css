@@ -1,9 +1,24 @@
+/*PC*/
 @media (min-width: 768px) {
     .avatar img{
+        margin: 0 1rem;
+        width: 150px;
+        height: 150px;
         position: relative;
         top: -60px;
     }
     .oftenBrowseCommunities{
         margin: -55px 0 0 20px;
+    }
+}
+/*Mobile*/
+@media (max-width: 768px) {
+    .avatar img{
+        margin: 5px;
+        width: 60px;
+        height: 60px;
+    }
+    .oftenBrowseCommunities h6{
+        font-size: 14px;
     }
 }

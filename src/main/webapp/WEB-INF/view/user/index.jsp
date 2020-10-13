@@ -15,18 +15,18 @@
 <main role="main" class="container">
     <div class="jumbotron jumbotron-fluid mt-5 mb-3 pt-3 pb-3">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-3 avatar">
-                    <img src="${userMap.user.avatar}" alt="" height="150" width="150" class="m-3 ml-4">
+            <div class="d-flex flex-wrap">
+                <div class="avatar">
+                    <img src="${userMap.user.avatar}" alt="">
                 </div>
-                <div class="col-lg-7 pl-0 d-flex flex-column">
+                <div class="d-flex flex-column ml-3">
                     <h3>${userMap.user.username}</h3>
                     <span>
                         生日：<fmt:formatDate value="${userMap.user.birthday}" pattern="MM-dd"/>
                     </span>
                 </div>
                 <c:if test="${sessionScope.userId==userMap.user.id}">
-                    <div class="col-lg-2 d-flex justify-content-end">
+                    <div class="ml-auto d-flex justify-content-end">
                         <div>
                             <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#changePassword">修改密码</button>
                         </div>
@@ -64,11 +64,13 @@
             </div>
             <!-- change password Modal -->
             <div class="oftenBrowseCommunities">
-                <h5 class="ml-1">常逛的社区</h5>
+                <h6 class="ml-1">常逛的社区</h6>
                 <div class="btn-group" role="group" aria-label="communities">
-                    <a href=""><button type="button" class="btn btn-secondary m-1">Left</button></a>
-                    <a href=""><button type="button" class="btn btn-secondary m-1">Middle</button></a>
-                    <a href=""><button type="button" class="btn btn-secondary m-1">Right</button></a>
+                    <c:forEach items="${userMap.communities}" var="community">
+                        <a href="${pageContext.request.contextPath}/community/${community.id}">
+                            <button type="button" class="btn btn-secondary m-1">${community.name}</button>
+                        </a>
+                    </c:forEach>
                 </div>
             </div>
         </div>
