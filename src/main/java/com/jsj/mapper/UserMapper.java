@@ -19,6 +19,8 @@ public interface UserMapper extends BaseMapper<User> {
 
     List<Map<String,Object>> commentDynamic(@Param("userId") int userId,@Param("pageIndex") int pageIndex);
 
+    List<Map<String,Object>> invitationsByUserId(@Param("userId") int userId,@Param("pageIndex") int pageIndex);
+
     int insert(User user);
 
     int update(User user);

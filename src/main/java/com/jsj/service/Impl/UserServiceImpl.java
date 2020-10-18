@@ -76,4 +76,9 @@ public class UserServiceImpl implements UserService {
     public List<Map<String, Object>> dynamic(int userId, int pageIndex) {
         return userMapper.commentDynamic(userId,pageIndex);
     }
+
+    @Override
+    public List<Map<String, Object>> invitationsByUserId(int userId, int pageIndex) {
+        return userMapper.invitationsByUserId(userId, pageIndex);
+    }
 }

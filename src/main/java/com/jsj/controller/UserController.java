@@ -101,13 +101,23 @@ public class UserController {
     }
 
     @GetMapping("/user/dynamic/{id}/{pageIndex}")
-    public String dynamic(Model model,@PathVariable int id, @PathVariable int pageIndex){
+    public String dynamic(Model model, @PathVariable int id, @PathVariable int pageIndex){
         List<Map<String,Object>> dynamics = userService.dynamic(id,pageIndex);
         if (dynamics.isEmpty()){
             return "redirect:/user/noData";
         }
         model.addAttribute("dynamics",dynamics);
         return "/user/dynamic";
+    }
+
+    @GetMapping("/user/invitations/{id}/{pageIndex}")
+    public String invitations(Model model, @PathVariable int id, @PathVariable int pageIndex){
+        List<Map<String,Object>> invitations = userService.invitationsByUserId(id, pageIndex);
+        if (invitations.isEmpty()){
+            return "redirect:/user/noData";
+        }
+        model.addAttribute("invitations",invitations);
+        return "/user/invitations";
     }
 
     @GetMapping("/user/noData")

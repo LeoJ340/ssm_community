@@ -78,14 +78,14 @@
     <div class="bg-white rounded shadow-sm main">
         <ul class="nav nav-tabs d-flex" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#dynamic">动态</a>
+                <a class="nav-link active" data-toggle="tab" href="#dynamic" onclick="dynamics()">动态</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#invitation">帖子</a>
+                <a class="nav-link" data-toggle="tab" href="#invitation" onclick="invitations()">帖子</a>
             </li>
             <c:if test="${userMap.user.id==sessionScope.userId}">
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#notice">
+                    <a class="nav-link" data-toggle="tab" href="#notice" onclick="">
                         通知
                         <span class="badge badge-pill bg-light align-text-bottom"></span>
                     </a>
@@ -124,6 +124,12 @@
             </div>
             <div id="invitation" class="container tab-pane"><br>
                 <%-- 帖子 --%>
+                <ul class="list-group" id="invitations"></ul>
+                <div class="text-center" id="invitationsLoading">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
             </div>
             <c:if test="${userMap.user.id==sessionScope.userId}">
                 <div id="notice" class="container tab-pane fade"><br>
@@ -137,6 +143,10 @@
 <script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/header.js"></script>
 <script>
+    let type = "dynamic"
+    let dynamicIsFull = false
+    let invitationIsFull = false
+
     function getScrollTop(){
         let scrollTop
         let bodyScrollTop = 0
@@ -174,18 +184,30 @@
         return windowHeight
     }
 
-    let dynamicPageIndex = 1
     window.onscroll = function () {
         if(getScrollHeight() - (getScrollTop() + getWindowHeight()) < 1){
+            if (type === "dynamic" && dynamicIsFull === false){
+                dynamics()
+            }else if (type === "invitation" && invitationIsFull === false){
+                invitations()
+            }
+        }
+    }
+
+    let dynamicPageIndex = 1
+    function dynamics() {
+        type = "dynamic"
+        if (!dynamicIsFull){
             $.ajax({
                 url: "${pageContext.request.contextPath}/user/dynamic/${userMap.user.id}/"+dynamicPageIndex*3,
                 type: "GET",
                 success:function (response) {
                     dynamicPageIndex++
                     try {
-                        let json = JSON.parse(response);
+                        let json = JSON.parse(response)
                         if (json.isEmpty){
                             $("#dynamicLoading").css("visibility","hidden")
+                            dynamicIsFull = true
                         }
                     }catch (e) {
                         $("#dynamics").append(response)
@@ -194,7 +216,29 @@
             })
         }
     }
-    
+
+    let invitationPageIndex = 0
+    function invitations() {
+        type = "invitation"
+        if (!invitationIsFull){
+            $.ajax({
+                url: "${pageContext.request.contextPath}/user/invitations/${userMap.user.id}/"+invitationPageIndex*10,
+                type: "GET",
+                success:function (response) {
+                    invitationPageIndex++
+                    try {
+                        let json = JSON.parse(response)
+                        if (json.isEmpty){
+                            $("#invitationsLoading").css("visibility","hidden")
+                            invitationIsFull = true
+                        }
+                    }catch (e) {
+                        $("#invitations").append(response)
+                    }
+                }
+            })
+        }
+    }
 
     <c:if test="${sessionScope.userId==userMap.user.id}">
     function changePassword(){

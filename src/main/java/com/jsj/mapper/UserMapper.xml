@@ -58,6 +58,21 @@
 	    LIMIT #{pageIndex},3
     </select>
 
+    <select id="invitationsByUserId" parameterType="int" resultType="map">
+        SELECT
+	        invitation.id AS invitationId,
+	        invitation.title AS invitationTitle,
+	        invitation.time,
+	        community.id AS communityId,
+	        community.`name` AS communityName
+        FROM
+	        invitation
+	        INNER JOIN community ON community.id = invitation.community_id
+        WHERE user_id = #{userId}
+        ORDER BY invitation.time DESC
+        LIMIT #{pageIndex},10
+    </select>
+
     <insert id="insert" parameterType="User">
         INSERT INTO user(username,password,birthday,email,tel_number,avatar)
         VALUES(#{username},#{password},#{birthday},#{email},#{telNumber},#{avatar})

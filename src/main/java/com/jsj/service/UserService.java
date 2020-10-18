@@ -18,4 +18,6 @@ public interface UserService {
 
     // 个人动态
     List<Map<String,Object>> dynamic(int userId,int pageIndex);
+
+    List<Map<String,Object>> invitationsByUserId(int userId,int pageIndex);
 }
