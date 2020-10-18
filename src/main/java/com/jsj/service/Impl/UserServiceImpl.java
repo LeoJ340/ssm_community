@@ -68,6 +68,12 @@ public class UserServiceImpl implements UserService {
         List<Community> communities = userMapper.communitiesByUserId(userId);
         userMap.put("communities",communities);
         userMap.put("user",user);
+        userMap.put("dynamics",this.dynamic(userId,0));
         return userMap;
+    }
+
+    @Override
+    public List<Map<String, Object>> dynamic(int userId, int pageIndex) {
+        return userMapper.commentDynamic(userId);
     }
 }

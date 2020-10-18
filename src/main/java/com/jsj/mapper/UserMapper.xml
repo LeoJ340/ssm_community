@@ -42,8 +42,10 @@
     <!--  评论动态  -->
     <select id="commentDynamic" parameterType="int" resultType="map">
         SELECT
-	        community.`name` AS community,
+	        community.`name` AS communityName,
+	        community.id AS communityId,
 	        invitation.title AS invitation,
+	        invitation.id AS invitationId,
 	        `comment`.content,
 	        `comment`.time
         FROM
@@ -52,6 +54,7 @@
 	        INNER JOIN community ON invitation.community_id = community.id
         WHERE
 	        `comment`.user_id = #{userId}
+	    ORDER BY `comment`.time DESC
     </select>
 
     <insert id="insert" parameterType="User">

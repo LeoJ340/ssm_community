@@ -2,6 +2,7 @@ package com.jsj.service;
 
 import com.jsj.bean.User;
 
+import java.util.List;
 import java.util.Map;
 
 public interface UserService {
@@ -14,4 +15,7 @@ public interface UserService {
 
     // 用户中心
     Map<String, Object> userindex(int userId);
+
+    // 个人动态
+    List<Map<String,Object>> dynamic(int userId,int pageIndex);
 }

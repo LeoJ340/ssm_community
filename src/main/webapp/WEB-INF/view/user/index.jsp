@@ -97,12 +97,32 @@
             <div id="dynamic" class="container tab-pane active"><br>
                 <%-- 个人动态页面 --%>
                 <ul class="list-group">
-                    <li class="list-group-item">
-
-                    </li>
+                    <c:forEach items="${userMap.dynamics}" var="dynamic" >
+                        <li class="list-group-item d-flex flex-column">
+                            <a>${dynamic.content}</a>
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M3.204 11L8 5.519 12.796 11H3.204zm-.753-.659l4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z"/>
+                            </svg>
+                            <div class="card mb-1 border-0 bg-light">
+                                <div class="card-body">
+                                    ${dynamic.invitation}
+                                </div>
+                            </div>
+                            <p class="time text-secondary">
+                                回复于${dynamic.communityName}社区
+                                &nbsp&nbsp
+                                <fmt:formatDate value="${dynamic.time}" pattern="yyyy-MM-dd"/>
+                            </p>
+                        </li>
+                    </c:forEach>
                 </ul>
+                <div class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
             </div>
-            <div id="invitation" class="container tab-pane active"><br>
+            <div id="invitation" class="container tab-pane"><br>
                 <%-- 帖子 --%>
             </div>
             <c:if test="${userMap.user.id==sessionScope.userId}">
@@ -117,6 +137,49 @@
 <script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/header.js"></script>
 <script>
+    // 文档的总高度
+    function getScrollHeight(){
+        let scrollHeight, bodyScrollHeight = 0, documentScrollHeight = 0;
+        if(document.body){
+            bodyScrollHeight = document.body.scrollHeight;
+        }
+        if(document.documentElement){
+            documentScrollHeight = document.documentElement.scrollHeight;
+        }
+        scrollHeight = (bodyScrollHeight - documentScrollHeight > 0) ? bodyScrollHeight : documentScrollHeight;
+        return scrollHeight;
+    }
+    // 滚动高度
+    function getScrollTop(){
+        let scrollTop, bodyScrollTop = 0, documentScrollTop = 0;
+        if(document.body){
+            bodyScrollTop = document.body.scrollTop;
+        }
+        if(document.documentElement){
+            documentScrollTop = document.documentElement.scrollTop;
+        }
+        scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop;
+        return scrollTop;
+    }
+    // 窗口高度
+    function getWindowHeight(){
+        let windowHeight;
+        if(document.compatMode === "CSS1Compat"){
+            windowHeight = document.documentElement.clientHeight;
+        }else{
+            windowHeight = document.body.clientHeight;
+        }
+        return windowHeight;
+    }
+    window.onscroll = function(){
+        const scrollTop = getScrollTop();
+        const scrollHeight = getScrollHeight();
+        const windowHeight = getWindowHeight();
+        if((scrollHeight - (scrollTop + windowHeight)) < 1){
+
+        }
+    };
+
     function changePassword(){
         const pass1 = $("#pass1").val();
         const pass2 = $("#pass2").val();
