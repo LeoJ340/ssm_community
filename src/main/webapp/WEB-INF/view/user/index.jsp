@@ -96,12 +96,12 @@
         <div class="tab-content">
             <div id="dynamic" class="container tab-pane active"><br>
                 <%-- 个人动态页面 --%>
-                <ul class="list-group">
+                <ul class="list-group" id="dynamics">
                     <c:forEach items="${userMap.dynamics}" var="dynamic" >
                         <li class="list-group-item d-flex flex-column">
                             <a>${dynamic.content}</a>
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M3.204 11L8 5.519 12.796 11H3.204zm-.753-.659l4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z"/>
+                                <path fill-rule="evenodd" d="M3.204 11L8 5.519 12.796 11H3.204zm-.753-.659l4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z"></path>
                             </svg>
                             <div class="card mb-1 border-0 bg-light">
                                 <div class="card-body">
@@ -116,7 +116,7 @@
                         </li>
                     </c:forEach>
                 </ul>
-                <div class="text-center">
+                <div class="text-center" id="dynamicLoading">
                     <div class="spinner-border" role="status">
                         <span class="sr-only">Loading...</span>
                     </div>
@@ -137,52 +137,69 @@
 <script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/header.js"></script>
 <script>
-    // 文档的总高度
-    function getScrollHeight(){
-        let scrollHeight, bodyScrollHeight = 0, documentScrollHeight = 0;
-        if(document.body){
-            bodyScrollHeight = document.body.scrollHeight;
-        }
-        if(document.documentElement){
-            documentScrollHeight = document.documentElement.scrollHeight;
-        }
-        scrollHeight = (bodyScrollHeight - documentScrollHeight > 0) ? bodyScrollHeight : documentScrollHeight;
-        return scrollHeight;
-    }
-    // 滚动高度
     function getScrollTop(){
-        let scrollTop, bodyScrollTop = 0, documentScrollTop = 0;
+        let scrollTop
+        let bodyScrollTop = 0
+        let documentScrollTop = 0
         if(document.body){
-            bodyScrollTop = document.body.scrollTop;
+            bodyScrollTop = document.body.scrollTop
         }
         if(document.documentElement){
-            documentScrollTop = document.documentElement.scrollTop;
+            documentScrollTop = document.documentElement.scrollTop
         }
-        scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop;
-        return scrollTop;
+        scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop
+        return scrollTop
     }
-    // 窗口高度
+    //文档的总高度
+    function getScrollHeight(){
+        let scrollHeight
+        let bodyScrollHeight = 0
+        let documentScrollHeight = 0
+        if(document.body){
+            bodyScrollHeight = document.body.scrollHeight
+        }
+        if(document.documentElement){
+            documentScrollHeight = document.documentElement.scrollHeight
+        }
+        scrollHeight = (bodyScrollHeight - documentScrollHeight > 0) ? bodyScrollHeight : documentScrollHeight
+        return scrollHeight
+    }
     function getWindowHeight(){
-        let windowHeight;
+        let windowHeight
         if(document.compatMode === "CSS1Compat"){
-            windowHeight = document.documentElement.clientHeight;
+            windowHeight = document.documentElement.clientHeight
         }else{
-            windowHeight = document.body.clientHeight;
+            windowHeight = document.body.clientHeight
         }
-        return windowHeight;
+        return windowHeight
     }
-    window.onscroll = function(){
-        const scrollTop = getScrollTop();
-        const scrollHeight = getScrollHeight();
-        const windowHeight = getWindowHeight();
-        if((scrollHeight - (scrollTop + windowHeight)) < 1){
 
+    let dynamicPageIndex = 1
+    window.onscroll = function () {
+        if(getScrollHeight() - (getScrollTop() + getWindowHeight()) < 1){
+            $.ajax({
+                url: "${pageContext.request.contextPath}/user/dynamic/${userMap.user.id}/"+dynamicPageIndex*3,
+                type: "GET",
+                success:function (response) {
+                    dynamicPageIndex++
+                    try {
+                        let json = JSON.parse(response);
+                        if (json.isEmpty){
+                            $("#dynamicLoading").css("visibility","hidden")
+                        }
+                    }catch (e) {
+                        $("#dynamics").append(response)
+                    }
+                }
+            })
         }
-    };
+    }
+    
 
+    <c:if test="${sessionScope.userId==userMap.user.id}">
     function changePassword(){
-        const pass1 = $("#pass1").val();
-        const pass2 = $("#pass2").val();
+        let pass1 = document.getElementById("pass1").value
+        let pass2 = document.getElementById("pass2").value
         if (pass1===""||pass2===""){
             alert("请输入密码");
         }else {
@@ -210,6 +227,7 @@
             }
         }
     }
+    </c:if>
 </script>
 </body>
 </html>

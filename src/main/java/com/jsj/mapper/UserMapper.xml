@@ -55,6 +55,7 @@
         WHERE
 	        `comment`.user_id = #{userId}
 	    ORDER BY `comment`.time DESC
+	    LIMIT #{pageIndex},3
     </select>
 
     <insert id="insert" parameterType="User">

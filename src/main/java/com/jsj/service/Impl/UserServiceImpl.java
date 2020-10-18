@@ -74,6 +74,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<Map<String, Object>> dynamic(int userId, int pageIndex) {
-        return userMapper.commentDynamic(userId);
+        return userMapper.commentDynamic(userId,pageIndex);
     }
 }

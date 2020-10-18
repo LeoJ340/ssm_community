@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -96,5 +98,23 @@ public class UserController {
         request.getSession().removeAttribute("username");
         request.getSession().removeAttribute("userId");
         return JSON.toJSONString(result);
+    }
+
+    @GetMapping("/user/dynamic/{id}/{pageIndex}")
+    public String dynamic(Model model,@PathVariable int id, @PathVariable int pageIndex){
+        List<Map<String,Object>> dynamics = userService.dynamic(id,pageIndex);
+        if (dynamics.isEmpty()){
+            return "redirect:/user/noData";
+        }
+        model.addAttribute("dynamics",dynamics);
+        return "/user/dynamic";
+    }
+
+    @GetMapping("/user/noData")
+    @ResponseBody
+    public String noData(){
+        Map<String,Object> map = new HashMap<>();
+        map.put("isEmpty",true);
+        return JSON.toJSONString(map);
     }
 }
