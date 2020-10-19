@@ -12,5 +12,5 @@ public interface CommentService {
 
     PageInfo<CommentUser> getCommentUser(int InvitationId, int pageIndex, int pageSize);
 
-    Map<String, Object> publishComment(Comment comment);
+    Map<String, Object> publishComment(int invitationUserId,Comment comment);
 }

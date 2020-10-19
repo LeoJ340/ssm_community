@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-@Transactional
 public class InvitationServiceImpl implements InvitationService {
 
     @Autowired

@@ -31,8 +31,8 @@ public class CommentController {
 
     @RequestMapping(method = RequestMethod.POST,value = "/publishComment")
     @ResponseBody
-    public String publishFirstComment(Comment comment){
-        return JSON.toJSONString(commentService.publishComment(comment));
+    public String publishFirstComment(int invitationUserId,Comment comment){
+        return JSON.toJSONString(commentService.publishComment(invitationUserId,comment));
     }
 
 }

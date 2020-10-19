@@ -46,7 +46,7 @@
 	        AND c1.`cin_id` = #{cin_id}
     </select>
 
-    <insert id="insert" parameterType="Comment">
+    <insert id="insert" parameterType="Comment" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO COMMENT (
             invitation_id,
             user_id,
@@ -71,6 +71,11 @@
             #{time},
             #{content}
         )
+    </insert>
+
+    <insert id="notice" parameterType="int">
+        INSERT INTO notice(recipient_id,comment_id)
+        VALUES(#{recipientId},#{commentId})
     </insert>
 
 

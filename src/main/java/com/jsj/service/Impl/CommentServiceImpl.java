@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-@Transactional
 public class CommentServiceImpl implements CommentService {
 
     @Autowired
@@ -37,10 +36,12 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public Map<String, Object> publishComment(Comment comment) {
+    @Transactional
+    public Map<String, Object> publishComment(int invitationUserId,Comment comment) {
         comment.setTime(new Date());
         Map<String, Object> map = new HashMap<>();
         if (commentMapper.insert(comment)>0){
+            commentMapper.notice(invitationUserId,comment.getId());
             map.put("success",true);
             map.put("message","评论成功");
         }else {

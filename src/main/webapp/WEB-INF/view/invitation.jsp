@@ -33,7 +33,7 @@
         <ul class="p-0">
             <li class="row border-info d-flex">
                 <%--用户信息--%>
-                <div class="col-lg-2 col-sm-12 mr-3 bg-gray-dark d-flex userInfo">
+                <div class="col-lg-2 col-sm-12 mr-3 bg-light d-flex userInfo">
                     <small class="text-muted">楼主</small>
                     <img class="avatar" src="${invitation.userAvatar}" alt="logo">
                     <span class="username">${invitation.username}</span>
@@ -47,7 +47,7 @@
             </li>
             <c:forEach items="${comments.list}" var="commentUser" varStatus="index">
                 <li class="row border-info d-flex">
-                    <div class="col-lg-2 col-sm-12 mr-3 bg-gray-dark d-flex userInfo">
+                    <div class="col-lg-2 col-sm-12 mr-3 bg-light d-flex userInfo">
                         <small class="text-muted">${index.index+1}楼</small>
                         <img class="avatar" src="${commentUser.userAvatar}" alt="logo">
                         <span class="username">${commentUser.username}</span>
@@ -189,7 +189,8 @@
         let firstComment = {
             invitationId:${invitation.id},
             <c:if test="${sessionScope.userId!=null}">userId:${sessionScope.userId},</c:if>
-            content:$("#content").val()
+            content:$("#content").val(),
+            invitationUserId:${invitation.userId}
         };
         $.ajax({
             url:"${pageContext.request.contextPath}/publishComment",
@@ -228,7 +229,8 @@
             invitationId: ${invitation.id},
             cinId:cinId,
             <c:if test="${sessionScope.userId!=null}">userId:${sessionScope.userId},</c:if>
-            content: commentView.find("form").find("textarea").val()
+            content: commentView.find("form").find("textarea").val(),
+            invitationUserId:${invitation.userId}
         };
         if (cforId!==undefined){
             comment.cforId = cforId;
