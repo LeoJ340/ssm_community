@@ -49,6 +49,9 @@ public class UserController {
         return "register";
     }
 
+    /**
+     * 登录
+     */
     @RequestMapping(method = RequestMethod.POST,value = "/login.do")
     @ResponseBody
     public String login(String username, String password, String remember,
@@ -65,10 +68,14 @@ public class UserController {
             request.getSession().setAttribute("userStatus", true);
             request.getSession().setAttribute("username", map.get("username"));
             request.getSession().setAttribute("userId", map.get("userId"));
+            request.getSession().setAttribute("noticeCount",map.get("noticeCount"));
         }
         return JSON.toJSONString(map);
     }
 
+    /**
+     * 注册
+     */
     @RequestMapping(method = RequestMethod.POST, value = "/register.do")
     @ResponseBody
     public String register(User user){
@@ -76,6 +83,9 @@ public class UserController {
         return JSON.toJSONString(userService.register(user));
     }
 
+    /**
+     * 注销
+     */
     @RequestMapping(method = RequestMethod.GET, value ="logout")
     public String logout(HttpServletRequest request) {
         request.getSession().removeAttribute("userStatus");
@@ -84,12 +94,33 @@ public class UserController {
         return "redirect:/";
     }
 
+    /**
+     * 默认用户中心
+     */
     @GetMapping("/user/{id}")
     public String userIndex(Model model, @PathVariable int id){
-        model.addAttribute("userMap",userService.userindex(id));
+        model.addAttribute("userMap",userService.userindex(id,""));
+        model.addAttribute("dynamicActive","active");
         return "/user/index";
     }
 
+    /**
+     * 通知中心
+     */
+    @GetMapping("/user/notices/{id}")
+    public String notice(Model model, HttpServletRequest request, @PathVariable int id){
+        model.addAttribute("userMap",userService.userindex(id,"notice"));
+        model.addAttribute("noticeActive","active");
+        // 修改通知状态
+        if (userService.removeNotice(id)>0){
+            request.getSession().removeAttribute("noticeCount");
+        }
+        return "/user/index";
+    }
+
+    /**
+     * 修改密码，退出登录状态
+     */
     @RequestMapping("/user/update")
     @ResponseBody
     public String update(User user,HttpServletRequest request){
@@ -100,6 +131,9 @@ public class UserController {
         return JSON.toJSONString(result);
     }
 
+    /**
+     * 请求个人动态组件
+     */
     @GetMapping("/user/dynamic/{id}/{pageIndex}")
     public String dynamic(Model model, @PathVariable int id, @PathVariable int pageIndex){
         List<Map<String,Object>> dynamics = userService.dynamic(id,pageIndex);
@@ -110,6 +144,9 @@ public class UserController {
         return "/user/dynamic";
     }
 
+    /**
+     * 请求用户发帖组件
+     */
     @GetMapping("/user/invitations/{id}/{pageIndex}")
     public String invitations(Model model, @PathVariable int id, @PathVariable int pageIndex){
         List<Map<String,Object>> invitations = userService.invitationsByUserId(id, pageIndex);
@@ -120,6 +157,22 @@ public class UserController {
         return "/user/invitations";
     }
 
+    /**
+     * 请求用户通知组件
+     */
+    @GetMapping("/user/notices/{id}/{pageIndex}")
+    public String notices(Model model, @PathVariable int id, @PathVariable int pageIndex){
+        List<Map<String,Object>> notices = userService.notices(id,pageIndex);
+        if (notices.isEmpty()){
+            return "redirect:/user/noData";
+        }
+        model.addAttribute("notices",notices);
+        return "/user/notices";
+    }
+
+    /**
+     * 无返回数据请求
+     */
     @GetMapping("/user/noData")
     @ResponseBody
     public String noData(){

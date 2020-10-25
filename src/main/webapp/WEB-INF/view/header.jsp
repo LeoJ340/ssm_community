@@ -19,8 +19,11 @@
                                aria-expanded="false">${sessionScope.username}</a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userInfo">
                                 <a class="dropdown-item" href="${pageContext.request.contextPath}/user/${sessionScope.userId}">个人中心</a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="${pageContext.request.contextPath}/user/notices/${sessionScope.userId}">
                                     收到回复
+                                    <c:if test="${sessionScope.noticeCount>0}">
+                                        <span class="badge badge-light">${sessionScope.noticeCount}</span>
+                                    </c:if>
                                 </a>
                                 <a class="dropdown-item" href="${pageContext.request.contextPath}/logout">注销</a>
                             </div>

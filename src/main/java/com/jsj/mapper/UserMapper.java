@@ -21,7 +21,13 @@ public interface UserMapper extends BaseMapper<User> {
 
     List<Map<String,Object>> invitationsByUserId(@Param("userId") int userId,@Param("pageIndex") int pageIndex);
 
+    int getNoticeCount(int userId);
+
+    List<Map<String,Object>> getNotices(@Param("userId") int userId,@Param("pageIndex") int pageIndex);
+
     int insert(User user);
 
     int update(User user);
+
+    int removeNotice(int userId);
 }

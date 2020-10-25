@@ -73,6 +73,28 @@
         LIMIT #{pageIndex},10
     </select>
 
+    <select id="getNoticeCount" parameterType="int" resultType="int">
+        SELECT
+        COUNT(1)
+        FROM
+        notice
+        INNER JOIN `comment` ON `comment`.id = notice.comment_id
+        AND notice.`status` = 0
+        AND notice.recipient_id &lt;&gt; `comment`.user_id
+        AND notice.recipient_id = #{userId}
+    </select>
+
+    <select id="getNotices" parameterType="int" resultType="map">
+        SELECT
+        `comment`.id,`comment`.user_id,`comment`.content,`comment`.time,`comment`.invitation_id
+        FROM
+        notice INNER JOIN`comment`
+        ON `comment`.id = notice.comment_id
+        AND notice.recipient_id &lt;&gt; `comment`.user_id
+        AND notice.recipient_id = #{userId}
+        LIMIT #{pageIndex},10
+    </select>
+
     <insert id="insert" parameterType="User">
         INSERT INTO user(username,password,birthday,email,tel_number,avatar)
         VALUES(#{username},#{password},#{birthday},#{email},#{telNumber},#{avatar})
@@ -103,6 +125,15 @@
         WHERE id = #{id}
     </update>
 
+    <update id="removeNotice" parameterType="int">
+        UPDATE notice
+        <set>
+            `status` = 1
+        </set>
+        WHERE
+	        recipient_id = #{userId}
+	        AND `status` = 0
+    </update>
 
 </mapper>
 

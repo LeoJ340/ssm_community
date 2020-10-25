@@ -5,6 +5,7 @@ import com.jsj.bean.InvitationUserCommunity;
 import com.jsj.bean.Invitation;
 
 import java.util.List;
+import java.util.Map;
 
 public interface InvitationMapper extends BaseMapper<Invitation> {
 
@@ -15,4 +16,6 @@ public interface InvitationMapper extends BaseMapper<Invitation> {
     List<InvitationUser> getInvitationUsersByCommunityId(int communityId);
 
     int insert(Invitation invitation);
+
+    Map<String,Object> getInvitationCommunity(int id);
 }

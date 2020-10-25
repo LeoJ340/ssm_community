@@ -2,6 +2,7 @@ package com.jsj.service.Impl;
 
 import com.jsj.bean.Community;
 import com.jsj.bean.User;
+import com.jsj.mapper.InvitationMapper;
 import com.jsj.mapper.UserMapper;
 import com.jsj.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private InvitationMapper invitationMapper;
 
     @Override
     public Map<String, Object> login(String username, String password) {
@@ -28,6 +31,7 @@ public class UserServiceImpl implements UserService {
             map.put("username",user.getUsername());
             map.put("userId", user.getId());
             map.put("message","登录成功");
+            map.put("noticeCount",userMapper.getNoticeCount(user.getId()));
         }else {
             map.put("success",false);
             map.put("message","用户名或密码错误");
@@ -62,13 +66,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Map<String, Object> userindex(int userId) {
+    public Map<String, Object> userindex(int userId,String type) {
         Map<String,Object> userMap = new HashMap<>();
         User user = userMapper.getById(userId);
         List<Community> communities = userMapper.communitiesByUserId(userId);
         userMap.put("communities",communities);
         userMap.put("user",user);
-        userMap.put("dynamics",this.dynamic(userId,0));
+        if (type.equals("notice")){
+            userMap.put("notices",this.notices(userId,0));
+        }else {
+            userMap.put("dynamics",this.dynamic(userId,0));
+        }
         return userMap;
     }
 
@@ -80,5 +88,22 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<Map<String, Object>> invitationsByUserId(int userId, int pageIndex) {
         return userMapper.invitationsByUserId(userId, pageIndex);
+    }
+
+    @Override
+    public List<Map<String, Object>> notices(int userId, int pageIndex) {
+        List<Map<String, Object>> notices = userMapper.getNotices(userId, pageIndex);
+        for (Map<String,Object> notice:notices) {
+            notice.put("username",userMapper.getById((Integer) notice.get("user_id")).getUsername());
+            Map<String,Object> map = invitationMapper.getInvitationCommunity((Integer) notice.get("invitation_id"));
+            notice.put("invitation",map.get("invitation"));
+            notice.put("community",map.get("community"));
+        }
+        return notices;
+    }
+
+    @Override
+    public int removeNotice(int userId) {
+        return userMapper.removeNotice(userId);
     }
 }

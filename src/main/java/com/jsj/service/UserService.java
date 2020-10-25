@@ -14,10 +14,14 @@ public interface UserService {
     Map<String,Object> update(User user);
 
     // 用户中心
-    Map<String, Object> userindex(int userId);
+    Map<String, Object> userindex(int userId,String type);
 
     // 个人动态
     List<Map<String,Object>> dynamic(int userId,int pageIndex);
 
     List<Map<String,Object>> invitationsByUserId(int userId,int pageIndex);
+
+    List<Map<String,Object>> notices(int userId,int pageIndex);
+
+    int removeNotice(int userId);
 }

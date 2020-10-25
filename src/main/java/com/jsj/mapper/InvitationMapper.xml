@@ -68,4 +68,14 @@
         VALUES(#{communityId},#{userId},#{title},#{time},#{content})
     </insert>
 
+    <select id="getInvitationCommunity" parameterType="int" resultType="map">
+        SELECT
+	        invitation.title AS invitation,
+	        community.`name` AS community
+        FROM
+	        invitation
+	        INNER JOIN community ON community.id = invitation.community_id
+	        AND invitation.id = #{id}
+    </select>
+
 </mapper>
