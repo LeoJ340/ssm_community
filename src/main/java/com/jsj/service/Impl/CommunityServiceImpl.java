@@ -5,7 +5,6 @@ import com.jsj.mapper.CommunityMapper;
 import com.jsj.service.CommunityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,9 +24,8 @@ public class CommunityServiceImpl implements CommunityService {
         return communityMapper.getById(communityId);
     }
 
-
     @Override
-    public List<Community> getCommunites(String name) {
+    public List<Community> getCommunities(String name) {
         return communityMapper.getCommunityLikeName(name);
     }
 }

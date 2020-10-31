@@ -18,7 +18,9 @@
             <img class="mr-3" src="${community.logo}" alt="logo" width="48" height="48">
         </a>
         <div class="lh-100">
-            <h6 class="mb-0 text-white lh-100">${community.name}社区</h6>
+            <a href="${pageContext.request.contextPath}/community/${community.id}">
+                <h6 class="mb-0 text-white lh-100">${community.name}社区</h6>
+            </a>
             <small>
                 <c:choose>
                     <c:when test="${empty community.introduction}">暂无简介</c:when>
@@ -38,7 +40,9 @@
                         </strong>
                         <fmt:formatDate value="${invitationUser.time}" pattern="yyyy-MM-dd hh:mm"/>
                     </div>
-                    <span class="d-block"><a href="">${invitationUser.username}</a></span>
+                    <span class="d-block">
+                        <a href="${pageContext.request.contextPath}/user/${invitationUser.userId}">${invitationUser.username}</a>
+                    </span>
                 </div>
             </div>
         </c:forEach>

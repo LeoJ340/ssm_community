@@ -13,8 +13,8 @@
 <%@include file="header.jsp"%>
 <main class="container">
     <div class="my-3 p-3 bg-white rounded shadow-sm">
-        <h5>搜索结果：共${communites.size()}条</h5>
-        <c:forEach items="${communites}" var="community">
+        <h5>搜索结果：共${communities.size()}条</h5>
+        <c:forEach items="${communities}" var="community">
             <div class="media text-muted pt-3">
                 <img src="${community.logo}" alt="logo" width="48" height="48">
                 <p class="media-body pb-3 mb-0 ml-3 lh-125 border-bottom border-gray">

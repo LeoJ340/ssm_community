@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jsj.mapper.CommunityMapper">
 
-    <!--查询一周内帖子数最多的6条社区记录-->
+    <!--查询一周内帖子数最多的3条社区记录-->
     <select id="getTopCommunity" resultType="Community">
         SELECT
             community.*,

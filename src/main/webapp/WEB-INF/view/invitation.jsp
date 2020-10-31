@@ -19,7 +19,9 @@
             <img class="mr-3" src="${community.logo}" alt="logo" width="48" height="48">
         </a>
         <div class="lh-100">
-            <h6 class="mb-0 text-white lh-100">${community.name}社区</h6>
+            <a href="${pageContext.request.contextPath}/community/${community.id}">
+                <h6 class="mb-0 text-white lh-100">${community.name}社区</h6>
+            </a>
             <small>
                 <c:choose>
                     <c:when test="${empty community.introduction}">暂无简介</c:when>
@@ -35,8 +37,12 @@
                 <%--用户信息--%>
                 <div class="col-lg-2 col-sm-12 mr-3 bg-light d-flex userInfo">
                     <small class="text-muted">楼主</small>
-                    <img class="avatar" src="${invitation.userAvatar}" alt="logo">
-                    <span class="username">${invitation.username}</span>
+                    <a href="${pageContext.request.contextPath}/user/${invitation.userId}" class="text-center">
+                        <img class="avatar" src="${invitation.userAvatar}" alt="logo">
+                    </a>
+                    <a href="${pageContext.request.contextPath}/user/${invitation.userId}" class="text-center">
+                        <span class="username">${invitation.username}</span>
+                    </a>
                 </div>
                 <div class="col-lg-9 col-sm-12 flex-grow-1 d-flex flex-column pt-3 pb-3 pr-3 border-bottom">
                     <p class="m-0" style="word-break: break-all;">${invitation.content}</p>
@@ -49,8 +55,12 @@
                 <li class="row border-info d-flex">
                     <div class="col-lg-2 col-sm-12 mr-3 bg-light d-flex userInfo">
                         <small class="text-muted">${index.index+1}楼</small>
-                        <img class="avatar" src="${commentUser.userAvatar}" alt="logo">
-                        <span class="username">${commentUser.username}</span>
+                        <a href="${pageContext.request.contextPath}/user/${commentUser.userId}" class="text-center">
+                            <img class="avatar" src="${commentUser.userAvatar}" alt="logo">
+                        </a>
+                        <a href="${pageContext.request.contextPath}/user/${commentUser.userId}" class="text-center">
+                            <span class="username">${commentUser.username}</span>
+                        </a>
                     </div>
                     <div class="col-lg-9 col-sm-12 flex-grow-1 d-flex flex-column pt-3 pb-3 pr-3 border-bottom" >
                         <p class="m-0" style="word-break: break-all;">${commentUser.content}</p>

@@ -10,5 +10,5 @@ public interface CommunityService {
 
     Community getCommunityById(int communityId);
 
-    List<Community> getCommunites(String name);
+    List<Community> getCommunities(String name);
 }

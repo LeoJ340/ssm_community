@@ -147,7 +147,8 @@
                 dynamicPageIndex++
                 let dynamicHtml = ""
                 response.list.forEach((value) => {
-                    dynamicHtml += "<li class=\"list-group-item d-flex flex-column\">\n" +
+                    dynamicHtml += "" +
+                        "    <li class=\"list-group-item d-flex flex-column\">\n" +
                         "        <a>" + value.content + "</a>\n" +
                         "        <svg width=\"1em\" height=\"1em\" viewBox=\"0 0 16 16\" class=\"bi bi-caret-up\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
                         "            <path fill-rule=\"evenodd\" d=\"M3.204 11L8 5.519 12.796 11H3.204zm-.753-.659l4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z\"></path>\n" +
@@ -158,7 +159,7 @@
                         "            </div>\n" +
                         "        </div>\n" +
                         "        <p class=\"time text-secondary\">\n" +
-                        "            回复于" + value.communityName + "社区&nbsp&nbsp" + value.time + "\n" +
+                        "            回复于" + value.communityName + "社区&nbsp&nbsp" + dateFormat("YYYY-mm-dd",value.time) + "\n" +
                         "        </p>\n" +
                         "    </li>"
                 })
@@ -180,10 +181,11 @@
                 invitationPageIndex++
                 let invitationsHtml = ""
                 response.list.forEach((value) => {
-                    invitationsHtml += "<li class=\"list-group-item d-flex flex-column\">\n" +
+                    invitationsHtml += "" +
+                        "    <li class=\"list-group-item d-flex flex-column\">\n" +
                         "        <a>" + value.invitationTitle + "</a>\n" +
                         "        <p class=\"time text-secondary m-0\">\n" +
-                        "            回复于" + value.communityName + "社区&nbsp&nbsp" + value.time + "\n" +
+                        "            回复于" + value.communityName + "社区&nbsp&nbsp" + dateFormat("YYYY-mm-dd",value.time) + "\n" +
                         "        </p>\n" +
                         "    </li>"
                 })
@@ -205,11 +207,12 @@
                 noticesPageIndex++
                 let noticesHtml = ""
                 response.list.forEach((value) => {
-                    noticesHtml += "<li class=\"list-group-item d-flex flex-column\">\n" +
+                    noticesHtml += "" +
+                        "    <li class=\"list-group-item d-flex flex-column\">\n" +
                         "        <div class=\"d-flex\">\n" +
                         "            <a href=\"#\">" + value.username + ":" + value.content + "</a>\n" +
                         "            <span class=\"flex-grow-1 d-flex justify-content-end time\">\n" +
-                        "                " + value.time + "\n" +
+                        "                " + dateFormat("YYYY-mm-dd",value.time) + "\n" +
                         "            </span>\n" +
                         "        </div>\n" +
                         "        <div class=\"d-flex mt-3 text-secondary\" style=\"font-size: 13px\">\n" +
