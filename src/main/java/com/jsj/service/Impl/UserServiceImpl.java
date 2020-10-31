@@ -1,5 +1,7 @@
 package com.jsj.service.Impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.jsj.bean.Community;
 import com.jsj.bean.User;
 import com.jsj.mapper.InvitationMapper;
@@ -40,6 +42,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public Map<String,Object> register(User user) {
         Map<String, Object> map = new HashMap<>();
         if (userMapper.insert(user)>0){
@@ -53,6 +56,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public Map<String, Object> update(User user) {
         Map<String,Object> map = new HashMap<>();
         if (userMapper.update(user)>0){
@@ -66,43 +70,44 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Map<String, Object> userindex(int userId,String type) {
+    public Map<String, Object> userIndex(int userId) {
         Map<String,Object> userMap = new HashMap<>();
         User user = userMapper.getById(userId);
         List<Community> communities = userMapper.communitiesByUserId(userId);
         userMap.put("communities",communities);
         userMap.put("user",user);
-        if (type.equals("notice")){
-            userMap.put("notices",this.notices(userId,0));
-        }else {
-            userMap.put("dynamics",this.dynamic(userId,0));
-        }
         return userMap;
     }
 
     @Override
-    public List<Map<String, Object>> dynamic(int userId, int pageIndex) {
-        return userMapper.commentDynamic(userId,pageIndex);
+    public PageInfo<Map<String, Object>> dynamics(int userId, int pageIndex, int pageSize) {
+        PageHelper.startPage(pageIndex, pageSize);
+        List<Map<String,Object>> dynamics = userMapper.commentDynamicsByUserId(userId);
+        return new PageInfo<>(dynamics);
     }
 
     @Override
-    public List<Map<String, Object>> invitationsByUserId(int userId, int pageIndex) {
-        return userMapper.invitationsByUserId(userId, pageIndex);
+    public PageInfo<Map<String, Object>> invitations(int userId, int pageIndex, int pageSize) {
+        PageHelper.startPage(pageIndex,pageSize);
+        List<Map<String,Object>> invitations = userMapper.invitationsByUserId(userId);
+        return new PageInfo<>(invitations);
     }
 
     @Override
-    public List<Map<String, Object>> notices(int userId, int pageIndex) {
-        List<Map<String, Object>> notices = userMapper.getNotices(userId, pageIndex);
+    public PageInfo<Map<String, Object>> notices(int userId, int pageIndex, int pageSize) {
+        PageHelper.startPage(pageIndex,pageSize);
+        List<Map<String, Object>> notices = userMapper.getNotices(userId);
         for (Map<String,Object> notice:notices) {
             notice.put("username",userMapper.getById((Integer) notice.get("user_id")).getUsername());
             Map<String,Object> map = invitationMapper.getInvitationCommunity((Integer) notice.get("invitation_id"));
             notice.put("invitation",map.get("invitation"));
             notice.put("community",map.get("community"));
         }
-        return notices;
+        return new PageInfo<>(notices);
     }
 
     @Override
+    @Transactional
     public int removeNotice(int userId) {
         return userMapper.removeNotice(userId);
     }

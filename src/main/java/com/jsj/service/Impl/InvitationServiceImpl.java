@@ -41,6 +41,7 @@ public class InvitationServiceImpl implements InvitationService {
 
 
     @Override
+    @Transactional
     public Map<String, Object> publishInvitation(Invitation invitation) {
         invitation.setTime(new Date());
         Map<String, Object> map = new HashMap<>();

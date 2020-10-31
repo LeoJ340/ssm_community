@@ -1,6 +1,7 @@
 package com.jsj.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageInfo;
 import com.jsj.bean.User;
 import com.jsj.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,7 +100,7 @@ public class UserController {
      */
     @GetMapping("/user/{id}")
     public String userIndex(Model model, @PathVariable int id){
-        model.addAttribute("userMap",userService.userindex(id,""));
+        model.addAttribute("userMap",userService.userIndex(id));
         model.addAttribute("dynamicActive","active");
         return "/user/index";
     }
@@ -109,7 +110,7 @@ public class UserController {
      */
     @GetMapping("/user/notices/{id}")
     public String notice(Model model, HttpServletRequest request, @PathVariable int id){
-        model.addAttribute("userMap",userService.userindex(id,"notice"));
+        model.addAttribute("userMap",userService.userIndex(id));
         model.addAttribute("noticeActive","active");
         // 修改通知状态
         if (userService.removeNotice(id)>0){
@@ -121,7 +122,7 @@ public class UserController {
     /**
      * 修改密码，退出登录状态
      */
-    @RequestMapping("/user/update")
+    @PostMapping("/user/update")
     @ResponseBody
     public String update(User user,HttpServletRequest request){
         Map<String,Object> result = userService.update(user);
@@ -132,52 +133,29 @@ public class UserController {
     }
 
     /**
-     * 请求个人动态组件
+     * 请求个人动态
      */
-    @GetMapping("/user/dynamic/{id}/{pageIndex}")
-    public String dynamic(Model model, @PathVariable int id, @PathVariable int pageIndex){
-        List<Map<String,Object>> dynamics = userService.dynamic(id,pageIndex);
-        if (dynamics.isEmpty()){
-            return "redirect:/user/noData";
-        }
-        model.addAttribute("dynamics",dynamics);
-        return "/user/dynamic";
-    }
-
-    /**
-     * 请求用户发帖组件
-     */
-    @GetMapping("/user/invitations/{id}/{pageIndex}")
-    public String invitations(Model model, @PathVariable int id, @PathVariable int pageIndex){
-        List<Map<String,Object>> invitations = userService.invitationsByUserId(id, pageIndex);
-        if (invitations.isEmpty()){
-            return "redirect:/user/noData";
-        }
-        model.addAttribute("invitations",invitations);
-        return "/user/invitations";
-    }
-
-    /**
-     * 请求用户通知组件
-     */
-    @GetMapping("/user/notices/{id}/{pageIndex}")
-    public String notices(Model model, @PathVariable int id, @PathVariable int pageIndex){
-        List<Map<String,Object>> notices = userService.notices(id,pageIndex);
-        if (notices.isEmpty()){
-            return "redirect:/user/noData";
-        }
-        model.addAttribute("notices",notices);
-        return "/user/notices";
-    }
-
-    /**
-     * 无返回数据请求
-     */
-    @GetMapping("/user/noData")
+    @GetMapping("/user/dynamics/{id}/pageIndex/{pageIndex}/pageSize/{pageSize}")
     @ResponseBody
-    public String noData(){
-        Map<String,Object> map = new HashMap<>();
-        map.put("isEmpty",true);
-        return JSON.toJSONString(map);
+    public PageInfo<Map<String, Object>> dynamics(@PathVariable int id, @PathVariable int pageIndex, @PathVariable int pageSize){
+        return userService.dynamics(id,pageIndex,pageSize);
+    }
+
+    /**s
+     * 请求用户发帖
+     */
+    @GetMapping("/user/invitations/{id}/pageIndex/{pageIndex}/pageSize/{pageSize}")
+    @ResponseBody
+    public PageInfo<Map<String, Object>> invitations(@PathVariable int id, @PathVariable int pageIndex, @PathVariable int pageSize){
+        return userService.invitations(id, pageIndex, pageSize);
+    }
+
+    /**
+     * 请求用户通知
+     */
+    @GetMapping("/user/notices/{id}/pageIndex/{pageIndex}/pageSize/{pageSize}")
+    @ResponseBody
+    public PageInfo<Map<String, Object>> notices(@PathVariable int id, @PathVariable int pageIndex, @PathVariable int pageSize){
+        return userService.notices(id, pageIndex, pageSize);
     }
 }

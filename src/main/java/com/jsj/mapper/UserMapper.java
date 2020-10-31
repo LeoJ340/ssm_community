@@ -17,13 +17,13 @@ public interface UserMapper extends BaseMapper<User> {
 
     List<Community> communitiesByUserId(int userId);
 
-    List<Map<String,Object>> commentDynamic(@Param("userId") int userId,@Param("pageIndex") int pageIndex);
+    List<Map<String,Object>> commentDynamicsByUserId(int userId);
 
-    List<Map<String,Object>> invitationsByUserId(@Param("userId") int userId,@Param("pageIndex") int pageIndex);
+    List<Map<String,Object>> invitationsByUserId(int userId);
 
     int getNoticeCount(int userId);
 
-    List<Map<String,Object>> getNotices(@Param("userId") int userId,@Param("pageIndex") int pageIndex);
+    List<Map<String,Object>> getNotices(int userId);
 
     int insert(User user);
 

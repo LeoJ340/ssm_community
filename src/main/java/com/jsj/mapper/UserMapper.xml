@@ -22,6 +22,7 @@
                 AND comment.`id` = #{commentId}
     </select>
 
+    <!--  常逛社区列表（4条）  -->
     <select id="communitiesByUserId" parameterType="int" resultType="Community">
         SELECT
 	        log.community_id AS id,
@@ -39,8 +40,7 @@
 	    LIMIT 4
     </select>
 
-    <!--  评论动态  -->
-    <select id="commentDynamic" parameterType="int" resultType="map">
+    <select id="commentDynamicsByUserId" parameterType="int" resultType="map">
         SELECT
 	        community.`name` AS communityName,
 	        community.id AS communityId,
@@ -55,7 +55,6 @@
         WHERE
 	        `comment`.user_id = #{userId}
 	    ORDER BY `comment`.time DESC
-	    LIMIT #{pageIndex},3
     </select>
 
     <select id="invitationsByUserId" parameterType="int" resultType="map">
@@ -70,7 +69,6 @@
 	        INNER JOIN community ON community.id = invitation.community_id
         WHERE user_id = #{userId}
         ORDER BY invitation.time DESC
-        LIMIT #{pageIndex},10
     </select>
 
     <select id="getNoticeCount" parameterType="int" resultType="int">
@@ -92,7 +90,6 @@
         ON `comment`.id = notice.comment_id
         AND notice.recipient_id &lt;&gt; `comment`.user_id
         AND notice.recipient_id = #{userId}
-        LIMIT #{pageIndex},10
     </select>
 
     <insert id="insert" parameterType="User">

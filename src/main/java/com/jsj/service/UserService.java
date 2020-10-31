@@ -1,5 +1,6 @@
 package com.jsj.service;
 
+import com.github.pagehelper.PageInfo;
 import com.jsj.bean.User;
 
 import java.util.List;
@@ -13,15 +14,13 @@ public interface UserService {
 
     Map<String,Object> update(User user);
 
-    // 用户中心
-    Map<String, Object> userindex(int userId,String type);
+    Map<String, Object> userIndex(int userId);
 
-    // 个人动态
-    List<Map<String,Object>> dynamic(int userId,int pageIndex);
+    PageInfo<Map<String, Object>> dynamics(int userId, int pageIndex, int pageSize);
 
-    List<Map<String,Object>> invitationsByUserId(int userId,int pageIndex);
+    PageInfo<Map<String, Object>> invitations(int userId, int pageIndex, int pageSize);
 
-    List<Map<String,Object>> notices(int userId,int pageIndex);
+    PageInfo<Map<String, Object>> notices(int userId, int pageIndex, int pageSize);
 
     int removeNotice(int userId);
 }

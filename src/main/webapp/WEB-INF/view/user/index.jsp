@@ -78,51 +78,29 @@
     <div class="bg-white rounded shadow-sm main">
         <ul class="nav nav-tabs d-flex" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#dynamic" onclick="dynamics()">动态</a>
+                <a id="dynamicTab" class="nav-link ${dynamicActive}" data-toggle="tab" href="#dynamic" onclick="dynamics()">动态</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#invitation" onclick="invitations()">帖子</a>
+                <a id="invitationTab" class="nav-link" data-toggle="tab" href="#invitation" onclick="invitations()">帖子</a>
             </li>
             <c:if test="${userMap.user.id==sessionScope.userId}">
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#notice" onclick="">
-                        通知
-                        <span class="badge badge-pill bg-light align-text-bottom"></span>
-                    </a>
+                    <a id="noticeTab" class="nav-link ${noticeActive}" data-toggle="tab" href="#notice" onclick="notices()">通知</a>
                 </li>
             </c:if>
         </ul>
         <!-- tab-content -->
         <div class="tab-content">
-            <div id="dynamic" class="container tab-pane active"><br>
+            <div id="dynamic" class="container tab-pane ${dynamicActive}"><br>
                 <%-- 个人动态页面 --%>
-                <ul class="list-group" id="dynamics">
-                    <c:forEach items="${userMap.dynamics}" var="dynamic" >
-                        <li class="list-group-item d-flex flex-column">
-                            <a>${dynamic.content}</a>
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M3.204 11L8 5.519 12.796 11H3.204zm-.753-.659l4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z"></path>
-                            </svg>
-                            <div class="card mb-1 border-0 bg-light">
-                                <div class="card-body">
-                                    ${dynamic.invitation}
-                                </div>
-                            </div>
-                            <p class="time text-secondary">
-                                回复于${dynamic.communityName}社区
-                                &nbsp&nbsp
-                                <fmt:formatDate value="${dynamic.time}" pattern="yyyy-MM-dd"/>
-                            </p>
-                        </li>
-                    </c:forEach>
-                </ul>
+                <ul class="list-group" id="dynamics"></ul>
                 <div class="text-center" id="dynamicLoading">
                     <div class="spinner-border" role="status">
                         <span class="sr-only">Loading...</span>
                     </div>
                 </div>
             </div>
-            <div id="invitation" class="container tab-pane"><br>
+            <div id="invitation" class="container tab-pane fade"><br>
                 <%-- 帖子 --%>
                 <ul class="list-group" id="invitations"></ul>
                 <div class="text-center" id="invitationsLoading">
@@ -132,8 +110,14 @@
                 </div>
             </div>
             <c:if test="${userMap.user.id==sessionScope.userId}">
-                <div id="notice" class="container tab-pane fade"><br>
+                <div id="notice" class="container tab-pane ${noticeActive}"><br>
                     <%-- 通知 --%>
+                    <ul class="list-group" id="notices"></ul>
+                    <div class="text-center" id="noticesLoading">
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
                 </div>
             </c:if>
         </div>
@@ -142,105 +126,108 @@
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/header.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/userIndex.js"></script>
 <script>
-    let type = "dynamic"
-    let dynamicIsFull = false
-    let invitationIsFull = false
-
-    function getScrollTop(){
-        let scrollTop
-        let bodyScrollTop = 0
-        let documentScrollTop = 0
-        if(document.body){
-            bodyScrollTop = document.body.scrollTop
-        }
-        if(document.documentElement){
-            documentScrollTop = document.documentElement.scrollTop
-        }
-        scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop
-        return scrollTop
-    }
-    //文档的总高度
-    function getScrollHeight(){
-        let scrollHeight
-        let bodyScrollHeight = 0
-        let documentScrollHeight = 0
-        if(document.body){
-            bodyScrollHeight = document.body.scrollHeight
-        }
-        if(document.documentElement){
-            documentScrollHeight = document.documentElement.scrollHeight
-        }
-        scrollHeight = (bodyScrollHeight - documentScrollHeight > 0) ? bodyScrollHeight : documentScrollHeight
-        return scrollHeight
-    }
-    function getWindowHeight(){
-        let windowHeight
-        if(document.compatMode === "CSS1Compat"){
-            windowHeight = document.documentElement.clientHeight
-        }else{
-            windowHeight = document.body.clientHeight
-        }
-        return windowHeight
+    window.onload = function () {
+        <c:if test="${not empty dynamicActive}">
+        dynamics()
+        </c:if>
+        <c:if test="${not empty noticeActive}">
+        notices()
+        </c:if>
     }
 
-    window.onscroll = function () {
-        if(getScrollHeight() - (getScrollTop() + getWindowHeight()) < 1){
-            if (type === "dynamic" && dynamicIsFull === false){
-                dynamics()
-            }else if (type === "invitation" && invitationIsFull === false){
-                invitations()
+    function loadDynamics() {
+        $.ajax({
+            url: "${pageContext.request.contextPath}/user/dynamics/${userMap.user.id}/pageIndex/"
+                + dynamicPageIndex + "/pageSize/" + pageSize,
+            type: "GET",
+            dataType: "json",
+            success:function (response) {
+                dynamicPageIndex++
+                let dynamicHtml = ""
+                response.list.forEach((value) => {
+                    dynamicHtml += "<li class=\"list-group-item d-flex flex-column\">\n" +
+                        "        <a>" + value.content + "</a>\n" +
+                        "        <svg width=\"1em\" height=\"1em\" viewBox=\"0 0 16 16\" class=\"bi bi-caret-up\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
+                        "            <path fill-rule=\"evenodd\" d=\"M3.204 11L8 5.519 12.796 11H3.204zm-.753-.659l4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z\"></path>\n" +
+                        "        </svg>\n" +
+                        "        <div class=\"card mb-1 border-0 bg-light\">\n" +
+                        "            <div class=\"card-body\">\n" +
+                        "                " + value.invitation + "\n" +
+                        "            </div>\n" +
+                        "        </div>\n" +
+                        "        <p class=\"time text-secondary\">\n" +
+                        "            回复于" + value.communityName + "社区&nbsp&nbsp" + value.time + "\n" +
+                        "        </p>\n" +
+                        "    </li>"
+                })
+                $("#dynamics").append(dynamicHtml)
+                if (!response.hasNextPage){
+                    $("#dynamicLoading").css("visibility","hidden")
+                    dynamicIsFull = true
+                }
             }
-        }
+        })
     }
 
-    let dynamicPageIndex = 1
-    function dynamics() {
-        type = "dynamic"
-        if (!dynamicIsFull){
-            $.ajax({
-                url: "${pageContext.request.contextPath}/user/dynamic/${userMap.user.id}/"+dynamicPageIndex*3,
-                type: "GET",
-                success:function (response) {
-                    dynamicPageIndex++
-                    try {
-                        let json = JSON.parse(response)
-                        if (json.isEmpty){
-                            $("#dynamicLoading").css("visibility","hidden")
-                            dynamicIsFull = true
-                        }
-                    }catch (e) {
-                        $("#dynamics").append(response)
-                    }
+    function loadInvitations() {
+        $.ajax({
+            url: "${pageContext.request.contextPath}/user/invitations/${userMap.user.id}/pageIndex/"
+                + invitationPageIndex + "/pageSize/" + pageSize,
+            type: "GET",
+            success:function (response) {
+                invitationPageIndex++
+                let invitationsHtml = ""
+                response.list.forEach((value) => {
+                    invitationsHtml += "<li class=\"list-group-item d-flex flex-column\">\n" +
+                        "        <a>" + value.invitationTitle + "</a>\n" +
+                        "        <p class=\"time text-secondary m-0\">\n" +
+                        "            回复于" + value.communityName + "社区&nbsp&nbsp" + value.time + "\n" +
+                        "        </p>\n" +
+                        "    </li>"
+                })
+                $("#invitations").append(invitationsHtml)
+                if (!response.hasNextPage){
+                    $("#invitationsLoading").css("visibility","hidden")
+                    invitationIsFull = true
                 }
-            })
-        }
+            }
+        })
     }
 
-    let invitationPageIndex = 0
-    function invitations() {
-        type = "invitation"
-        if (!invitationIsFull){
-            $.ajax({
-                url: "${pageContext.request.contextPath}/user/invitations/${userMap.user.id}/"+invitationPageIndex*10,
-                type: "GET",
-                success:function (response) {
-                    invitationPageIndex++
-                    try {
-                        let json = JSON.parse(response)
-                        if (json.isEmpty){
-                            $("#invitationsLoading").css("visibility","hidden")
-                            invitationIsFull = true
-                        }
-                    }catch (e) {
-                        $("#invitations").append(response)
-                    }
+    function loadNotices() {
+        $.ajax({
+            url: "${pageContext.request.contextPath}/user/notices/${userMap.user.id}/pageIndex/"
+                + invitationPageIndex + "/pageSize/" + pageSize,
+            type: "GET",
+            success:function (response) {
+                noticesPageIndex++
+                let noticesHtml = ""
+                response.list.forEach((value) => {
+                    noticesHtml += "<li class=\"list-group-item d-flex flex-column\">\n" +
+                        "        <div class=\"d-flex\">\n" +
+                        "            <a href=\"#\">" + value.username + ":" + value.content + "</a>\n" +
+                        "            <span class=\"flex-grow-1 d-flex justify-content-end time\">\n" +
+                        "                " + value.time + "\n" +
+                        "            </span>\n" +
+                        "        </div>\n" +
+                        "        <div class=\"d-flex mt-3 text-secondary\" style=\"font-size: 13px\">\n" +
+                        "            回复我的帖子：\n" +
+                        "            <span>" + value.invitation + " > " + value.community + "社区</span>\n" +
+                        "        </div>\n" +
+                        "    </li>"
+                })
+                $("#notices").append(noticesHtml)
+                if (!response.hasNextPage){
+                    $("#noticesLoading").css("visibility","hidden")
+                    noticeIsFull = true
                 }
-            })
-        }
+            }
+        })
     }
 
-    <c:if test="${sessionScope.userId==userMap.user.id}">
+    <c:if test="${userMap.user.id == sessionScope.userId}">
     function changePassword(){
         let pass1 = document.getElementById("pass1").value
         let pass2 = document.getElementById("pass2").value
