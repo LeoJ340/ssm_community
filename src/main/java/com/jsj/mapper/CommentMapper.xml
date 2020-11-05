@@ -16,6 +16,7 @@
         <!--关联信息-->
         <result column="username" property="username"/>
         <result column="avatar" property="userAvatar"/>
+        <result column="cforUserId" property="cforUserId"/>
         <result column="cforUsername" property="cforUsername"/>
     </resultMap>
 
@@ -38,6 +39,7 @@
         SELECT
             c1.*,
 	        cu.username AS username,
+	        fu.id AS  cforUserId,
 	        fu.username AS cforUsername
         FROM
 	        COMMENT c1

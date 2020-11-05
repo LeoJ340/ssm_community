@@ -9,6 +9,8 @@ public class CommentUser extends Comment {
 
     private String userAvatar;
 
+    private int cforUserId;
+
     private String cforUsername;
 
     public String getUsername() {
@@ -25,6 +27,14 @@ public class CommentUser extends Comment {
 
     public void setUserAvatar(String userAvatar) {
         this.userAvatar = userAvatar;
+    }
+
+    public int getCforUserId() {
+        return cforUserId;
+    }
+
+    public void setCforUserId(int cforUserId) {
+        this.cforUserId = cforUserId;
     }
 
     public String getCforUsername() {

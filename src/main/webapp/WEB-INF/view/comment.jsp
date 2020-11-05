@@ -6,9 +6,9 @@
         <c:forEach items="${comments.list}" var="comment">
             <li class="row">
                 <span>
-                    <a class="text-primary">${comment.username}</a>:
+                    <a href="${pageContext.request.contextPath}/user/${comment.userId}" class="text-primary">${comment.username}</a>:
                     <c:if test="${comment.cforId!=comment.cinId}">
-                        回复<a class="text-primary">${comment.cforUsername}</a> :
+                        回复<a href="${pageContext.request.contextPath}/user/${comment.cforUserId}" class="text-primary">${comment.cforUsername}</a> :
                     </c:if>
                         ${comment.content}
                 </span>

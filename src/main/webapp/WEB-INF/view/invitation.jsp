@@ -45,8 +45,8 @@
                     </a>
                 </div>
                 <div class="col-lg-9 col-sm-12 flex-grow-1 d-flex flex-column pt-3 pb-3 pr-3 border-bottom">
-                    <p class="m-0" style="word-break: break-all;">${invitation.content}</p>
-                    <span class="flex-grow-1 d-flex align-self-end justify-content-end mr-3 mt-5 time">
+                    <p class="m-0 comment_content" style="word-break: break-all;">${invitation.content}</p>
+                    <span class="flex-grow-1 d-flex align-self-end justify-content-end mr-3 time">
                         <fmt:formatDate value="${invitation.time}" pattern="yyyy-MM-dd hh:mm"/>
                     </span>
                 </div>
@@ -63,13 +63,15 @@
                         </a>
                     </div>
                     <div class="col-lg-9 col-sm-12 flex-grow-1 d-flex flex-column pt-3 pb-3 pr-3 border-bottom" >
-                        <p class="m-0" style="word-break: break-all;">${commentUser.content}</p>
-                        <span class="flex-grow-1 d-flex align-self-end justify-content-end mr-3 time">
-                            <fmt:formatDate value="${commentUser.time}" pattern="yyyy-MM-dd hh:mm"/>
-                        </span>
+                        <div class="m-0 comment_content" style="word-break: break-all;">${commentUser.content}</div>
                         <div>
-                            <button class="btn btn-primary d-flex justify-content-end" type="button"
-                                    data-toggle="collapse" data-target="#comment${commentUser.id}" onclick="showComment(${commentUser.id})">回复</button>
+                            <div class="d-flex flex-wrap">
+                                <button class="btn btn-info btn-sm d-flex justify-content-end" type="button"
+                                        data-toggle="collapse" data-target="#comment${commentUser.id}" onclick="showComment(${commentUser.id})">回复</button>
+                                <span class="flex-grow-1 d-flex align-self-end justify-content-end mr-3 time">
+                                    <fmt:formatDate value="${commentUser.time}" pattern="yyyy-MM-dd hh:mm"/>
+                                </span>
+                            </div>
                             <div class="collapse mt-3" id="comment${commentUser.id}">
                                     <%--楼中评论区--%>
                             </div>
