@@ -45,7 +45,7 @@
                     </a>
                 </div>
                 <div class="col-lg-9 col-sm-12 flex-grow-1 d-flex flex-column pt-3 pb-3 pr-3 border-bottom">
-                    <p class="m-0 comment_content" style="word-break: break-all;">${invitation.content}</p>
+                    <div class="m-0 comment_content" style="word-break: break-all;">${invitation.content}</div>
                     <span class="flex-grow-1 d-flex align-self-end justify-content-end mr-3 time">
                         <fmt:formatDate value="${invitation.time}" pattern="yyyy-MM-dd hh:mm"/>
                     </span>
