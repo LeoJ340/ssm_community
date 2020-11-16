@@ -1,5 +1,5 @@
 # 基于ssm框架实现的简单社区平台
-本项目基于ssm框架实现的社区网站，项目一定层度上参考了百度贴吧，采用[wangEditor富文本](http://www.wangeditor.com/)实现的发帖、评论功能。本项目无后台管理系统。
+本项目基于ssm框架实现的社区论坛网站，一定程度上参考了百度贴吧，采用[wangEditor富文本](http://www.wangeditor.com/)实现的发帖、评论功能。本项目前端基于[Bootstrap](https://v4.bootcss.com/)UI框架，对页面做了移动端的适配。本项目暂无后台管理系统。
 
 ## 项目环境
     jdk：1.8
@@ -31,6 +31,7 @@
             │       ├── log4j.properties  -- 日志配置文件
             │       ├── spring.xml  -- spring整合mybatis的配置文件
             │       ├── SpringMvc.xml  -- springmvc的配置文件
+            │       ├── mybatis-config.xml  -- mybatis的配置文件
             │       └── ssm_community.sql  -- 项目数据库创建和表创建的SQL语句
             └── webapp
                     ├── static 
@@ -41,3 +42,7 @@
                     └── WEB-INF
                             ├── web.xml -- web部署文件
                             └── view -- 视图jsp文件
+演示站点: http://116.62.108.219:8080/community/ <br/>
+示例用户：<br/>
+用户名：Leo <br/>
+密码：340 <br/>
