@@ -42,7 +42,3 @@
                     └── WEB-INF
                             ├── web.xml -- web部署文件
                             └── view -- 视图jsp文件
-演示站点: http://116.62.108.219:8080/community/ <br/>
-示例用户：<br/>
-用户名：Leo <br/>
-密码：340 <br/>
